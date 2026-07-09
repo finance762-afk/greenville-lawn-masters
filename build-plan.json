@@ -1,0 +1,626 @@
+{
+  "seo": {
+    "serp_context": null,
+    "target_radius": 25,
+    "primary_keyword": "lawn care mauldin sc",
+    "secondary_keywords": [
+      "lawn mowing mauldin sc",
+      "lawn care near me mauldin sc",
+      "landscaping mauldin sc",
+      "lawn fertilization mauldin sc",
+      "weed control mauldin sc",
+      "lawn aeration mauldin sc",
+      "grass seeding mauldin sc",
+      "tree trimming mauldin sc",
+      "pressure washing mauldin sc",
+      "lawn cleanup mauldin sc",
+      "lawn care greenville sc",
+      "residential lawn care mauldin sc"
+    ]
+  },
+  "tier": "premium",
+  "email": "",
+  "pages": [
+    {
+      "slug": "lawn-care-services",
+      "type": "service_group",
+      "title": "Lawn Care Services in Mauldin, SC",
+      "sections": "hero, service_cards_grid, individual_service_details, process, cta",
+      "services": [
+        "Lawn Mowing",
+        "Fertilization & Weed Control",
+        "Grub Control & Lawn Disease Treatment",
+        "Aeration & Overseeding",
+        "Winter Lawn Preparation",
+        "Grass Seeding & Overseeding",
+        "Lawn Repair & Leveling",
+        "Commercial Lawn Care"
+      ],
+      "primary_keyword": "grub control & lawn disease treatment Mauldin SC"
+    },
+    {
+      "slug": "tree-shrub-services",
+      "type": "service_group",
+      "title": "Tree & Shrub Services in Mauldin, SC",
+      "sections": "hero, service_cards_grid, individual_service_details, process, cta",
+      "services": [
+        "Edging & String Trimming",
+        "Leaf Removal & Storm Debris Cleanup",
+        "Hedge & Shrub Trimming",
+        "Tree Trimming & Brush Removal",
+        "Pet Waste Removal"
+      ],
+      "primary_keyword": "leaf removal & storm debris cleanup Mauldin SC"
+    },
+    {
+      "slug": "spring-fall-cleanup",
+      "type": "service",
+      "title": "Spring & Fall Cleanup in Mauldin, SC",
+      "sections": "hero, service_details, process, testimonials, cta",
+      "services": [
+        "Spring & Fall Cleanup"
+      ],
+      "primary_keyword": "spring & fall cleanup Mauldin SC"
+    },
+    {
+      "slug": "mulch-installation",
+      "type": "service",
+      "title": "Mulch Installation in Mauldin, SC",
+      "sections": "hero, service_details, process, testimonials, cta",
+      "services": [
+        "Mulch Installation"
+      ],
+      "primary_keyword": "mulch installation Mauldin SC"
+    },
+    {
+      "slug": "flower-bed-shrub-planting",
+      "type": "service",
+      "title": "Flower Bed & Shrub Planting in Mauldin, SC",
+      "sections": "hero, service_details, process, testimonials, cta",
+      "services": [
+        "Flower Bed & Shrub Planting"
+      ],
+      "primary_keyword": "flower bed & shrub planting Mauldin SC"
+    },
+    {
+      "slug": "sod-installation",
+      "type": "service",
+      "title": "Sod Installation in Mauldin, SC",
+      "sections": "hero, service_details, process, testimonials, cta",
+      "services": [
+        "Sod Installation"
+      ],
+      "primary_keyword": "sod installation Mauldin SC"
+    },
+    {
+      "slug": "pressure-washing",
+      "type": "service",
+      "title": "Pressure Washing in Mauldin, SC",
+      "sections": "hero, service_details, process, testimonials, cta",
+      "services": [
+        "Pressure Washing"
+      ],
+      "primary_keyword": "pressure washing Mauldin SC"
+    },
+    {
+      "slug": "gutter-cleaning",
+      "type": "service",
+      "title": "Gutter Cleaning in Mauldin, SC",
+      "sections": "hero, service_details, process, testimonials, cta",
+      "services": [
+        "Gutter Cleaning"
+      ],
+      "primary_keyword": "gutter cleaning Mauldin SC"
+    },
+    {
+      "slug": "fence-line-clearing-debris-hauling",
+      "type": "service",
+      "title": "Fence Line Clearing & Debris Hauling in Mauldin, SC",
+      "sections": "hero, service_details, process, testimonials, cta",
+      "services": [
+        "Fence Line Clearing & Debris Hauling"
+      ],
+      "primary_keyword": "fence line clearing & debris hauling Mauldin SC"
+    },
+    {
+      "slug": "soil-testing-lime-application",
+      "type": "service",
+      "title": "Soil Testing & Lime Application in Mauldin, SC",
+      "sections": "hero, service_details, process, testimonials, cta",
+      "services": [
+        "Soil Testing & Lime Application"
+      ],
+      "primary_keyword": "soil testing & lime application Mauldin SC"
+    },
+    {
+      "slug": "dethatching",
+      "type": "service",
+      "title": "Dethatching in Mauldin, SC",
+      "sections": "hero, service_details, process, testimonials, cta",
+      "services": [
+        "Dethatching"
+      ],
+      "primary_keyword": "dethatching Mauldin SC"
+    }
+  ],
+  "phone": "",
+  "assets": {
+    "logo": {
+      "url": "https://db.pageone.cloud/storage/v1/object/public/client-assets/greenville-lawn-masters/logo/1783619426197-14ls2z-qt_q_95.png",
+      "storage_path": "greenville-lawn-masters/logo/1783619426197-14ls2z-qt_q_95.png"
+    },
+    "images": [
+      {
+        "alt": "",
+        "url": "https://db.pageone.cloud/storage/v1/object/public/client-assets/greenville-lawn-masters/logo/1783619426197-14ls2z-qt_q_95.png",
+        "page": "any",
+        "role": null,
+        "caption": "",
+        "context": "logo",
+        "storage_path": "greenville-lawn-masters/logo/1783619426197-14ls2z-qt_q_95.png",
+        "quality_score": null
+      },
+      {
+        "alt": "",
+        "url": "https://db.pageone.cloud/storage/v1/object/public/client-assets/greenville-lawn-masters/photos/1783619518888-b5idvx-cr_w_370_h_278.png",
+        "page": "any",
+        "role": null,
+        "caption": "",
+        "context": "other",
+        "storage_path": "greenville-lawn-masters/photos/1783619518888-b5idvx-cr_w_370_h_278.png",
+        "quality_score": null
+      },
+      {
+        "alt": "",
+        "url": "https://db.pageone.cloud/storage/v1/object/public/client-assets/greenville-lawn-masters/photos/1783619519235-vuj570-rs_w_370_h_278_cg_true.png",
+        "page": "any",
+        "role": null,
+        "caption": "",
+        "context": "other",
+        "storage_path": "greenville-lawn-masters/photos/1783619519235-vuj570-rs_w_370_h_278_cg_true.png",
+        "quality_score": null
+      },
+      {
+        "alt": "",
+        "url": "https://db.pageone.cloud/storage/v1/object/public/client-assets/greenville-lawn-masters/photos/1783619519585-exuort-rs_w_370_h_278_cg_true__1_.png",
+        "page": "any",
+        "role": null,
+        "caption": "",
+        "context": "other",
+        "storage_path": "greenville-lawn-masters/photos/1783619519585-exuort-rs_w_370_h_278_cg_true__1_.png",
+        "quality_score": null
+      },
+      {
+        "alt": "",
+        "url": "https://db.pageone.cloud/storage/v1/object/public/client-assets/greenville-lawn-masters/photos/1783619519887-6qejer-rs_w_370_h_278_cg_true_m.png",
+        "page": "any",
+        "role": null,
+        "caption": "",
+        "context": "other",
+        "storage_path": "greenville-lawn-masters/photos/1783619519887-6qejer-rs_w_370_h_278_cg_true_m.png",
+        "quality_score": null
+      },
+      {
+        "alt": "",
+        "url": "https://db.pageone.cloud/storage/v1/object/public/client-assets/greenville-lawn-masters/photos/1783619520248-k1enth-rs_w_370_h_278_cg_true_m__1_.png",
+        "page": "any",
+        "role": null,
+        "caption": "",
+        "context": "other",
+        "storage_path": "greenville-lawn-masters/photos/1783619520248-k1enth-rs_w_370_h_278_cg_true_m__1_.png",
+        "quality_score": null
+      },
+      {
+        "alt": "",
+        "url": "https://db.pageone.cloud/storage/v1/object/public/client-assets/greenville-lawn-masters/photos/1783619520588-pwizl1-rs_w_370_h_278_cg_true_m__2_.png",
+        "page": "any",
+        "role": null,
+        "caption": "",
+        "context": "other",
+        "storage_path": "greenville-lawn-masters/photos/1783619520588-pwizl1-rs_w_370_h_278_cg_true_m__2_.png",
+        "quality_score": null
+      }
+    ],
+    "page_allocations": null,
+    "recommended_hero_image": {
+      "alt": "",
+      "url": "https://db.pageone.cloud/storage/v1/object/public/client-assets/greenville-lawn-masters/logo/1783619426197-14ls2z-qt_q_95.png",
+      "context": "logo",
+      "quality_score": null
+    }
+  },
+  "design": {
+    "fonts": {},
+    "notes": "",
+    "style": "elegant",
+    "colors": {
+      "accent": "#06b6d4",
+      "primary": "#1a2b3c",
+      "secondary": "#4d5e6f",
+      "extracted_from_logo": false
+    },
+    "logo_analysis": {}
+  },
+  "domain": "greenville-lawn-masters",
+  "phases": [
+    {
+      "name": "scaffold",
+      "phase": 1,
+      "status": "pending"
+    },
+    {
+      "name": "nav_footer_head",
+      "phase": 2,
+      "status": "pending"
+    },
+    {
+      "name": "homepage",
+      "phase": 3,
+      "status": "pending"
+    },
+    {
+      "name": "inner_pages",
+      "phase": 4,
+      "status": "pending"
+    },
+    {
+      "name": "seo_aeo_deploy",
+      "phase": 5,
+      "status": "pending"
+    }
+  ],
+  "address": {
+    "zip": "29662",
+    "city": "Mauldin",
+    "state": "SC",
+    "street": ""
+  },
+  "content": {
+    "usps": [
+      "fast estimate within 24 hours."
+    ],
+    "years": 2,
+    "insurance": "",
+    "description": "",
+    "certifications": []
+  },
+  "reviews": [],
+  "tagline": "Greenville's Lawn Perfected",
+  "industry": "lawn_care",
+  "services": [
+    {
+      "name": "Lawn Mowing",
+      "keywords": [
+        "lawn mowing Mauldin SC",
+        "professional lawn care Mauldin",
+        "weekly lawn service",
+        "yard maintenance Greenville area"
+      ],
+      "description": "Professional lawn mowing services in Mauldin, SC for weekly, biweekly, or one-time maintenance. Keep your lawn healthy and neatly trimmed year-round."
+    },
+    {
+      "name": "Edging & String Trimming",
+      "keywords": [
+        "lawn edging Mauldin SC",
+        "string trimming service",
+        "weed eating Greenville",
+        "lawn trimming South Carolina"
+      ],
+      "description": "Expert edging and weed eating services that keep your lawn lines crisp and clean. Includes debris blowing from sidewalks, driveways, and patios."
+    },
+    {
+      "name": "Fertilization & Weed Control",
+      "keywords": [
+        "lawn fertilization Mauldin SC",
+        "weed control service",
+        "crabgrass prevention Greenville",
+        "lawn treatment South Carolina"
+      ],
+      "description": "Comprehensive lawn health services including fertilization, weed control, and crabgrass prevention. Professional treatments keep your Mauldin lawn green and vibrant."
+    },
+    {
+      "name": "Grub Control & Lawn Disease Treatment",
+      "keywords": [
+        "grub control Mauldin SC",
+        "lawn disease treatment",
+        "pest control Greenville",
+        "lawn health services"
+      ],
+      "description": "Specialized grub and disease treatments protect your lawn from damaging pests and infections. Professional-grade solutions for healthy grass."
+    },
+    {
+      "name": "Soil Testing & Lime Application",
+      "keywords": [
+        "soil testing Mauldin SC",
+        "lime application service",
+        "soil amendment Greenville",
+        "lawn chemistry South Carolina"
+      ],
+      "description": "Professional soil testing determines your lawn's needs, followed by targeted lime application and nutrient treatments. Optimize soil for lush growth."
+    },
+    {
+      "name": "Aeration & Overseeding",
+      "keywords": [
+        "lawn aeration Mauldin SC",
+        "overseeding service Greenville",
+        "lawn renovation",
+        "aeration South Carolina"
+      ],
+      "description": "Lawn aeration and overseeding improve soil penetration and fill bare spots with healthy grass. Revitalize thin or struggling lawns."
+    },
+    {
+      "name": "Dethatching",
+      "keywords": [
+        "dethatching Mauldin SC",
+        "thatch removal service",
+        "lawn care Greenville",
+        "dethatching South Carolina"
+      ],
+      "description": "Professional thatch removal improves water and nutrient absorption in your lawn. Keep your Mauldin grass healthier and more resilient."
+    },
+    {
+      "name": "Spring & Fall Cleanup",
+      "keywords": [
+        "spring cleanup Mauldin SC",
+        "fall cleanup service",
+        "seasonal yard maintenance",
+        "property care Greenville SC"
+      ],
+      "description": "Seasonal cleanup services including spring preparation and fall leaf removal. Comprehensive yard maintenance throughout the year in Mauldin."
+    },
+    {
+      "name": "Leaf Removal & Storm Debris Cleanup",
+      "keywords": [
+        "leaf removal Mauldin SC",
+        "debris cleanup service",
+        "storm cleanup Greenville",
+        "yard cleanup South Carolina"
+      ],
+      "description": "Professional leaf removal and storm debris cleanup for Mauldin properties. Keep your yard clean and safe after weather events."
+    },
+    {
+      "name": "Winter Lawn Preparation",
+      "keywords": [
+        "winter lawn prep Mauldin SC",
+        "seasonal maintenance service",
+        "winter landscaping Greenville",
+        "lawn care South Carolina"
+      ],
+      "description": "Prepare your Mauldin lawn for winter with professional seasonal treatments. Ensure grass survives cold months and thrives in spring."
+    },
+    {
+      "name": "Mulch Installation",
+      "keywords": [
+        "mulch installation Mauldin SC",
+        "landscape mulch service Greenville",
+        "flower bed mulch",
+        "landscaping South Carolina"
+      ],
+      "description": "Professional mulch installation for flower beds and landscaping areas. Enhance curb appeal while protecting plant health."
+    },
+    {
+      "name": "Flower Bed & Shrub Planting",
+      "keywords": [
+        "flower planting Mauldin SC",
+        "shrub planting Greenville",
+        "landscaping service",
+        "garden maintenance South Carolina"
+      ],
+      "description": "Complete flower bed cleanup, planting, and maintenance for flowers, shrubs, and small trees. Professional landscaping to enhance property beauty."
+    },
+    {
+      "name": "Hedge & Shrub Trimming",
+      "keywords": [
+        "hedge trimming Mauldin SC",
+        "shrub trimming Greenville",
+        "pruning service",
+        "landscape maintenance South Carolina"
+      ],
+      "description": "Expert hedge and shrub trimming maintains neat, healthy landscaping. Professional pruning keeps your Mauldin property looking manicured."
+    },
+    {
+      "name": "Tree Trimming & Brush Removal",
+      "keywords": [
+        "tree trimming Mauldin SC",
+        "brush removal service Greenville",
+        "tree pruning",
+        "landscaping cleanup South Carolina"
+      ],
+      "description": "Small tree trimming and brush removal services for residential landscapes. Keep your Mauldin property clear and professionally maintained."
+    },
+    {
+      "name": "Sod Installation",
+      "keywords": [
+        "sod installation Mauldin SC",
+        "new lawn installation Greenville",
+        "sod service",
+        "grass installation South Carolina"
+      ],
+      "description": "Professional sod installation for instant green lawns in Mauldin, SC. Perfect for new properties or complete lawn renovation projects."
+    },
+    {
+      "name": "Grass Seeding & Overseeding",
+      "keywords": [
+        "grass seed Mauldin SC",
+        "seeding service Greenville",
+        "lawn seeding",
+        "grass installation South Carolina"
+      ],
+      "description": "Expert grass seeding for bare spots, patchy areas, and complete lawn installation. Professional seeding ensures healthy, uniform grass growth."
+    },
+    {
+      "name": "Lawn Repair & Leveling",
+      "keywords": [
+        "lawn repair Mauldin SC",
+        "patch repair service Greenville",
+        "bare spot repair",
+        "lawn restoration South Carolina"
+      ],
+      "description": "Professional patch repair, bare spot solutions, and topdressing for damaged lawn areas. Expert leveling for seamless results."
+    },
+    {
+      "name": "Pressure Washing",
+      "keywords": [
+        "pressure washing Mauldin SC",
+        "driveway cleaning Greenville",
+        "power washing service",
+        "property cleaning South Carolina"
+      ],
+      "description": "Professional pressure washing for driveways, sidewalks, and property surfaces in Mauldin. Remove dirt and stains safely and effectively."
+    },
+    {
+      "name": "Gutter Cleaning",
+      "keywords": [
+        "gutter cleaning Mauldin SC",
+        "gutter service Greenville",
+        "home maintenance",
+        "property care South Carolina"
+      ],
+      "description": "Professional gutter cleaning maintains proper water drainage around your Mauldin home. Preventative maintenance for property protection."
+    },
+    {
+      "name": "Fence Line Clearing & Debris Hauling",
+      "keywords": [
+        "debris hauling Mauldin SC",
+        "fence clearing Greenville",
+        "yard cleanup service",
+        "property maintenance South Carolina"
+      ],
+      "description": "Clear fence lines and remove yard debris with professional hauling services. Keep your Mauldin property clean and well-maintained."
+    },
+    {
+      "name": "Pet Waste Removal",
+      "keywords": [
+        "pet waste removal Mauldin SC",
+        "pet cleanup service Greenville",
+        "yard sanitation",
+        "pet care services"
+      ],
+      "description": "Regular pet waste removal service keeps your Mauldin yard clean and hygienic. Convenient add-on for busy pet owners."
+    },
+    {
+      "name": "Commercial Lawn Care",
+      "keywords": [
+        "commercial lawn care Mauldin SC",
+        "HOA landscaping Greenville",
+        "business grounds maintenance",
+        "facility lawn service"
+      ],
+      "description": "Professional lawn maintenance for businesses, HOAs, apartments, and municipal properties. Reliable scheduled service for professional grounds."
+    }
+  ],
+  "owner_name": "",
+  "client_slug": "greenville-lawn-masters",
+  "form_action": "https://design.pageone.cloud/api/leads/greenville-lawn-masters",
+  "github_repo": "",
+  "company_name": "greenville-lawn-masters",
+  "service_areas": [
+    {
+      "zip": "29662",
+      "city": "",
+      "state": "SC",
+      "primary": true
+    }
+  ],
+  "image_curation": null,
+  "research_brief": null,
+  "competitor_urls": [],
+  "phone_secondary": "",
+  "service_grouping": {
+    "cap": 16,
+    "tier": "premium",
+    "groups": [
+      {
+        "page": "Lawn Care Services",
+        "services": [
+          "Lawn Mowing",
+          "Fertilization & Weed Control",
+          "Grub Control & Lawn Disease Treatment",
+          "Aeration & Overseeding",
+          "Winter Lawn Preparation",
+          "Grass Seeding & Overseeding",
+          "Lawn Repair & Leveling",
+          "Commercial Lawn Care"
+        ]
+      },
+      {
+        "page": "Tree & Shrub Services",
+        "services": [
+          "Edging & String Trimming",
+          "Leaf Removal & Storm Debris Cleanup",
+          "Hedge & Shrub Trimming",
+          "Tree Trimming & Brush Removal",
+          "Pet Waste Removal"
+        ]
+      },
+      {
+        "page": "Spring & Fall Cleanup",
+        "solo": true,
+        "services": [
+          "Spring & Fall Cleanup"
+        ]
+      },
+      {
+        "page": "Mulch Installation",
+        "solo": true,
+        "services": [
+          "Mulch Installation"
+        ]
+      },
+      {
+        "page": "Flower Bed & Shrub Planting",
+        "solo": true,
+        "services": [
+          "Flower Bed & Shrub Planting"
+        ]
+      },
+      {
+        "page": "Sod Installation",
+        "solo": true,
+        "services": [
+          "Sod Installation"
+        ]
+      },
+      {
+        "page": "Pressure Washing",
+        "solo": true,
+        "services": [
+          "Pressure Washing"
+        ]
+      },
+      {
+        "page": "Gutter Cleaning",
+        "solo": true,
+        "services": [
+          "Gutter Cleaning"
+        ]
+      },
+      {
+        "page": "Fence Line Clearing & Debris Hauling",
+        "solo": true,
+        "services": [
+          "Fence Line Clearing & Debris Hauling"
+        ]
+      },
+      {
+        "page": "Soil Testing & Lime Application",
+        "solo": true,
+        "services": [
+          "Soil Testing & Lime Application"
+        ]
+      },
+      {
+        "page": "Dethatching",
+        "solo": true,
+        "services": [
+          "Dethatching"
+        ]
+      }
+    ],
+    "grouped_count": 11,
+    "original_count": 22
+  },
+  "lead_notification_email": "",
+  "lead_notification_phone": "",
+  "google_business_profile_url": ""
+}
