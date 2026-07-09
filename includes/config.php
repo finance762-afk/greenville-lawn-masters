@@ -52,6 +52,34 @@ $address = [
 $yearEstablished = 2024;   // build-plan content.years = 2, as of 2026
 $yearsInBusiness = 2;
 
+/* ── Hours / geo / Google Business Profile ────────────────── */
+// INTAKE GAPS. Phase 2's LocalBusiness schema emits openingHoursSpecification,
+// geo, and hasMap ONLY when these are populated (seo-aeo-2026.md marks geo +
+// hasMap required). Absent keys are omitted from the JSON-LD rather than
+// guessed — invented coordinates or hours are worse than missing ones.
+//
+// $businessHours: 'Mo'|'Tu'|'We'|'Th'|'Fr'|'Sa'|'Su' => ['08:00','17:00'].
+// $geo: ['lat' => float, 'lng' => float]. Extract from the GBP map embed URL —
+//       !3d is LATITUDE, !2d is LONGITUDE (seo-aeo-2026.md line 178).
+$businessHours = [];     // REQUIRED — schema openingHoursSpecification, footer hours column
+$geo           = null;   // REQUIRED — schema geo
+$gbpUrl        = '';     // REQUIRED — schema hasMap (GBP Share → Copy link)
+$gbpPlaceId    = '';     // REQUIRED — review link + directions link (ChIJ...)
+
+/* ── Intake gap guard ─────────────────────────────────────── */
+// Anything listed here renders as *absent*, never as a placeholder: no fake
+// phone in the sticky CTA bar, no fake street in the footer NAP, no fake
+// telephone in LocalBusiness schema. head.php renders a loud banner while this
+// array is non-empty so the gap cannot survive CM's browser-review gate. The
+// banner disappears on its own the moment the values land in this file.
+$missingIntake = [];
+if ($phone === '')             { $missingIntake[] = 'phone'; }
+if ($email === '')             { $missingIntake[] = 'email'; }
+if ($address['street'] === '') { $missingIntake[] = 'address.street'; }
+if (empty($businessHours))     { $missingIntake[] = 'businessHours'; }
+if ($geo === null)             { $missingIntake[] = 'geo (lat/lng)'; }
+if ($gbpUrl === '')            { $missingIntake[] = 'googleBusinessProfileUrl'; }
+
 /* ── Lead form ────────────────────────────────────────────── */
 
 // Taken from build-plan.json `form_action`.
@@ -69,19 +97,48 @@ $consentVersion = 'v2.1';
 $googleAnalyticsId = 'G-XXXXXXXXXX';   // placeholder — swap post-launch
 
 /* ── Brand ────────────────────────────────────────────────── */
-// build-plan.json design.colors, extracted_from_logo = false.
-// These are generic portal defaults (navy / slate / cyan) with no green —
-// unusual for lawn care. Logo analysis (design-system.md Part B) has not run.
-// Re-derive from the logo before Phase 2 writes framework.css tokens.
-
+// Logo analysis run in Phase 2 because it was never run in Phase 0 and
+// build-plan.json shipped design.colors with extracted_from_logo = false —
+// generic portal defaults (navy #1a2b3c / slate #4d5e6f / cyan #06b6d4), with
+// no green anywhere, on a brand whose logo is green. CLAUDE.md: "Phase 0 logo
+// analysis drives ALL color and nav decisions — never guess colors."
+//
+// Source: the logo PNG, 313x200 (1.57:1 → combination mark → 50-60px nav logo).
+// Colors measured, not guessed (`convert logo.png -colors 8 histogram:info:-`):
+//   #2C6F2F  forest green  — script "Greenville" + badge ring   (8,278 px)
+//   #020202  near-black    — "LAWN MASTERS" wordmark           (44,143 px)
+//   #3D4543  dark slate    — the dog's apron                    (1,341 px)
+//
+// `accent` is a lighter tint of the measured brand green, NOT an invented hue:
+// the logo contains no third color. If the brand wants a warm complement
+// (amber/clay) for CTAs, that is a design call for CM, not an assumption here.
+//
+// Contrast verified against WCAG 2.1 AA:
+//   white on primary          6.14:1   nav links, footer text
+//   primary on white          6.14:1   body links
+//   primary-dark on white     9.30:1   nav CTA button label
+//   accent on dark            5.19:1   footer credit link
 $colors = [
-    'primary'   => '#1a2b3c',
-    'secondary' => '#4d5e6f',
-    'accent'    => '#06b6d4',
+    'primary'      => '#2C6F2F',
+    'primary_dark' => '#1F5122',
+    'secondary'    => '#3D4543',
+    'accent'       => '#4E9C52',
+    'dark'         => '#161A17',   // footer / dark sections (near-black, green cast)
+];
+
+// design-aesthetics-2026.md §A3.3 has no Premium row for landscaping — only
+// "Landscaping / tree service | Standard | Bricolage Grotesque | Figtree".
+// Interpolated: Fraunces is the §A3.3 Premium-tier heading default and its soft
+// serif echoes the logo's script wordmark; Figtree stays as the industry body
+// pick. Two families total (CLAUDE.md: "No more than 2 fonts"). Both variable.
+// FLAG FOR CM: this is a judgment call, not a table lookup.
+$fonts = [
+    'heading' => 'Fraunces',
+    'body'    => 'Figtree',
 ];
 
 $designStyle = 'elegant';   // build-plan design.style; archetype not yet assigned
-$cssVersion  = 1;           // increment on every framework.css change
+$cssVersion  = 2;           // bumped: Phase 2 rewrote brand tokens + nav/footer CSS
 
 $logoUrl = 'https://db.pageone.cloud/storage/v1/object/public/client-assets/'
          . 'greenville-lawn-masters/logo/1783619426197-14ls2z-qt_q_95.png';

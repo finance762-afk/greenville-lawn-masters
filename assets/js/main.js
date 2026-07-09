@@ -17,38 +17,69 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   }
 
-  /* === Mobile Hamburger Nav Toggle === */
+  /* === Mobile Hamburger / Overlay Menu ===
+     The menu carries [hidden] in the markup so it stays collapsed if this
+     script never runs. Opening clears [hidden] first, then adds .is-open on
+     the next frame — toggling both in one frame gives the staggered CSS
+     transitions no start state to animate from, and they don't play. */
   const hamburger = document.querySelector('.hamburger');
-  const navLinks = document.querySelector('.nav-links');
-  if (hamburger && navLinks) {
+  const mobileMenu = document.querySelector('.mobile-menu');
+
+  if (hamburger && mobileMenu) {
+    const openMenu = function() {
+      mobileMenu.hidden = false;
+      requestAnimationFrame(function() { mobileMenu.classList.add('is-open'); });
+      hamburger.classList.add('is-open');
+      hamburger.setAttribute('aria-expanded', 'true');
+      hamburger.setAttribute('aria-label', 'Close menu');
+      document.body.style.overflow = 'hidden';
+    };
+
+    const closeMenu = function() {
+      mobileMenu.classList.remove('is-open');
+      hamburger.classList.remove('is-open');
+      hamburger.setAttribute('aria-expanded', 'false');
+      hamburger.setAttribute('aria-label', 'Open menu');
+      document.body.style.overflow = '';
+      // Re-hide only after the close transition, or the overlay snaps away.
+      window.setTimeout(function() {
+        if (!mobileMenu.classList.contains('is-open')) mobileMenu.hidden = true;
+      }, 350);
+    };
+
     hamburger.addEventListener('click', function() {
-      const isOpen = navLinks.classList.toggle('active');
-      hamburger.classList.toggle('active');
-      hamburger.setAttribute('aria-expanded', isOpen.toString());
-      document.body.style.overflow = isOpen ? 'hidden' : '';
+      if (hamburger.classList.contains('is-open')) closeMenu();
+      else openMenu();
     });
-    // Close nav when clicking a link
-    navLinks.querySelectorAll('a').forEach(function(link) {
-      link.addEventListener('click', function() {
-        navLinks.classList.remove('active');
-        hamburger.classList.remove('active');
-        hamburger.setAttribute('aria-expanded', 'false');
-        document.body.style.overflow = '';
-      });
+
+    mobileMenu.querySelectorAll('a').forEach(function(link) {
+      link.addEventListener('click', closeMenu);
+    });
+
+    document.addEventListener('keydown', function(evt) {
+      if (evt.key === 'Escape' && hamburger.classList.contains('is-open')) {
+        closeMenu();
+        hamburger.focus();
+      }
     });
   }
 
-  /* === Smooth Scroll for Anchor Links === */
-  document.querySelectorAll('a[href^="#"]').forEach(function(anchor) {
+  /* === Smooth Scroll for Anchor Links ===
+     .skip-link is excluded on purpose. preventDefault() here would stop the
+     browser from moving focus to #main-content, which is the only thing the
+     skip link exists to do — it would still scroll, but a keyboard user's next
+     Tab would land back in the navbar. Bare "#" is excluded too (no target). */
+  document.querySelectorAll('a[href^="#"]:not(.skip-link)').forEach(function(anchor) {
     anchor.addEventListener('click', function(e) {
-      e.preventDefault();
       var targetId = this.getAttribute('href').substring(1);
+      if (!targetId) return;
       var target = document.getElementById(targetId);
-      if (target) {
-        var headerHeight = header ? header.offsetHeight : 0;
-        var top = target.getBoundingClientRect().top + window.pageYOffset - headerHeight - 20;
-        window.scrollTo({ top: top, behavior: 'smooth' });
-      }
+      if (!target) return;
+
+      e.preventDefault();
+      var headerHeight = header ? header.offsetHeight : 0;
+      var top = target.getBoundingClientRect().top + window.pageYOffset - headerHeight - 20;
+      window.scrollTo({ top: top, behavior: 'smooth' });
     });
   });
 

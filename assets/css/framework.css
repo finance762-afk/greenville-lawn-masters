@@ -5,17 +5,21 @@
 
 /* === CSS Custom Properties === */
 :root {
-  /* Brand Colors */
-  --color-primary: #1a2b3c;
-  --color-primary-rgb: 26, 43, 60;
-  --color-secondary: #4d5e6f;
-  --color-secondary-rgb: 77, 94, 111;
-  --color-accent: #06b6d4;
+  /* Brand Colors — measured from the logo during Phase 2 (see includes/config.php).
+     Phase 1 shipped navy/slate/cyan portal defaults with extracted_from_logo=false;
+     the logo is forest green + near-black. Pairings verified against WCAG 2.1 AA. */
+  --color-primary: #2C6F2F;          /* script "Greenville" + badge ring */
+  --color-primary-rgb: 44, 111, 47;
+  --color-primary-dark: #1F5122;     /* pressed states, nav CTA label */
+  --color-secondary: #3D4543;        /* the dog's apron */
+  --color-secondary-rgb: 61, 69, 67;
+  --color-accent: #4E9C52;           /* lighter tint of the brand green */
+  --color-accent-rgb: 78, 156, 82;
   --color-white: #ffffff;
   --color-black: #111111;
-  --color-dark: #1a1a2e;
-  --color-dark-alt: #16213e;
-  --color-light: #f8f9fa;
+  --color-dark: #161A17;             /* footer / dark sections */
+  --color-dark-alt: #1F2621;
+  --color-light: #F4F7F4;
   --color-gray: #6b7280;
   --color-gray-light: #e5e7eb;
   --color-gray-dark: #374151;
@@ -24,9 +28,26 @@
   --color-danger: #ef4444;
   --color-star: #fbbf24;
 
-  /* Typography */
-  --font-heading: 'Montserrat', sans-serif;
-  --font-body: 'Open Sans', sans-serif;
+  /* Tinted card backgrounds — brand colors at 6-9% alpha (CLAUDE.md) */
+  --color-card-tint-1: rgba(44, 111, 47, 0.08);
+  --color-card-tint-2: rgba(31, 81, 34, 0.06);
+  --color-card-tint-3: rgba(78, 156, 82, 0.09);
+  --color-card-tint-neutral: rgba(245, 247, 250, 1);
+
+  /* Layout */
+  --nav-height: 76px;
+  --max-width: 1200px;
+
+  /* Typography — variable families only (design-aesthetics-2026.md §A3.4) */
+  --font-heading: 'Fraunces', Georgia, serif;
+  --font-body: 'Figtree', system-ui, -apple-system, sans-serif;
+
+  /* Fluid type scale (§A3.4) */
+  --fs-h1: clamp(2.5rem, 5vw, 6rem);
+  --fs-h2: clamp(1.875rem, 3.5vw, 3.5rem);
+  --fs-h3: clamp(1.375rem, 2.5vw, 2rem);
+  --fs-body: clamp(1rem, 1.1vw, 1.125rem);
+
   --font-size-xs: 0.75rem;
   --font-size-sm: 0.875rem;
   --font-size-base: 1rem;
@@ -81,7 +102,7 @@
 html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
 body {
   font-family: var(--font-body);
-  font-size: var(--font-size-base);
+  font-size: var(--fs-body);
   line-height: 1.6;
   color: var(--color-black);
   background: var(--color-white);
@@ -90,12 +111,44 @@ body {
 img { max-width: 100%; height: auto; display: block; }
 a { color: var(--color-primary); text-decoration: none; transition: color var(--transition-fast); }
 a:hover { color: var(--color-accent); }
-h1, h2, h3, h4, h5, h6 { font-family: var(--font-heading); font-weight: 700; line-height: 1.2; color: var(--color-dark); }
-h1 { font-size: var(--font-size-5xl); }
-h2 { font-size: var(--font-size-4xl); }
-h3 { font-size: var(--font-size-2xl); }
+
+/* Headings. text-wrap:balance stops orphaned last words; overflow-wrap:anywhere
+   stops long service names ("Fence Line Clearing & Debris Hauling") from
+   overflowing narrow cards. Both MANDATORY — they prevent the most common
+   visual bugs in this system (text clipping, content overflow). */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+  font-weight: 800;
+  line-height: 1.2;
+  color: var(--color-dark);
+}
+h1, h2, h3, h4 {
+  text-wrap: balance;
+  overflow-wrap: anywhere;
+}
+h1 { font-size: var(--fs-h1); line-height: 1.1; letter-spacing: -0.03em; }
+h2 { font-size: var(--fs-h2); line-height: 1.15; letter-spacing: -0.02em; }
+h3 { font-size: var(--fs-h3); line-height: 1.25; }
 h4 { font-size: var(--font-size-xl); }
-p { margin-bottom: var(--space-4); }
+p { margin-bottom: var(--space-4); overflow-wrap: anywhere; }
+
+/* Focus ring — every interactive element, keyboard only */
+:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+/* Reduced motion: kill animation and transition, keep layout intact */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
 
 /* === Skip Link Accessibility === */
 .skip-link {
@@ -106,8 +159,16 @@ p { margin-bottom: var(--space-4); }
 .skip-link:focus { top: var(--space-2); }
 
 /* === Container === */
-.container { max-width: 1200px; margin: 0 auto; padding: 0 5%; }
-.container-narrow { max-width: 900px; margin: 0 auto; padding: 0 5%; }
+.container {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 clamp(1rem, 4vw, 2rem);
+}
+.container-narrow { max-width: 900px; margin: 0 auto; padding: 0 clamp(1rem, 4vw, 2rem); }
+
+/* Prose never exceeds 65ch (CLAUDE.md → Design Anti-Patterns) */
+.prose { max-width: 65ch; }
+.prose-centered { max-width: 65ch; margin-inline: auto; }
 
 /* === Buttons === */
 .btn {
@@ -127,40 +188,190 @@ p { margin-bottom: var(--space-4); }
 .btn-lg { padding: var(--space-4) var(--space-8); font-size: var(--font-size-base); }
 .btn-sm { padding: var(--space-2) var(--space-4); font-size: var(--font-size-xs); }
 
+/* === Intake gap banner ===
+   Only rendered while includes/config.php is missing required intake data.
+   Deliberately unmissable — see head.php. */
+.intake-warning {
+  position: relative; z-index: 1100;
+  background: var(--color-danger); color: var(--color-white);
+  padding: var(--space-3) var(--space-4);
+  font-size: var(--font-size-sm); line-height: 1.5; text-align: center;
+}
+.intake-warning code {
+  background: rgba(0,0,0,0.25); padding: 2px 6px;
+  border-radius: var(--radius-sm); font-size: 0.9em;
+}
+
 /* === Glassmorphism Navigation === */
 .site-header {
   position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+  background: rgba(var(--color-primary-rgb), 0.88);
   backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
-  background: rgba(26, 43, 60, 0.85);
-  padding: var(--space-3) 0; transition: all var(--transition-base);
+  transition: background var(--transition-base), box-shadow var(--transition-base);
 }
 .site-header.scrolled {
-  background: rgba(26, 43, 60, 0.95);
-  box-shadow: 0 2px 20px rgba(0,0,0,0.15); padding: var(--space-2) 0;
+  background: rgba(var(--color-primary-rgb), 0.97);
+  box-shadow: 0 2px 20px rgba(0,0,0,0.18);
 }
-.header-inner { display: flex; align-items: center; justify-content: space-between; }
-.site-logo { height: 45px; width: auto; }
-.site-logo img { height: 100%; width: auto; }
-.nav-links { display: flex; align-items: center; gap: var(--space-6); list-style: none; }
-.nav-links a { color: var(--color-white); font-family: var(--font-heading); font-size: var(--font-size-sm); font-weight: 500; transition: opacity var(--transition-fast); }
-.nav-links a:hover { opacity: 0.8; color: var(--color-white); }
-.nav-dropdown { position: relative; }
-.nav-dropdown-menu {
-  position: absolute; top: 100%; left: 0; background: var(--color-white); border-radius: var(--radius-md);
-  box-shadow: var(--shadow-lg); padding: var(--space-2) 0; min-width: 220px;
-  opacity: 0; visibility: hidden; transform: translateY(10px); transition: all var(--transition-fast);
-}
-.nav-dropdown:hover .nav-dropdown-menu { opacity: 1; visibility: visible; transform: translateY(0); }
-.nav-dropdown-menu a { color: var(--color-dark); padding: var(--space-2) var(--space-4); display: block; font-size: var(--font-size-sm); }
-.nav-dropdown-menu a:hover { background: var(--color-light); color: var(--color-primary); }
-.header-cta { margin-left: var(--space-4); }
 
-/* Mobile Nav Toggle */
-.hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: var(--space-2); background: none; border: none; }
-.hamburger span { display: block; width: 24px; height: 2px; background: var(--color-white); transition: all var(--transition-fast); }
-.hamburger.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
-.hamburger.active span:nth-child(2) { opacity: 0; }
-.hamburger.active span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
+/* While the intake-gap banner is on the page it occupies normal flow at the top
+   of <body>, and a position:fixed header would sit underneath it — hiding the
+   whole navbar. Un-fix the header for as long as the banner exists so the build
+   stays reviewable. Both disappear together once config.php is filled in. */
+body.has-intake-warning .site-header { position: static; }
+body.has-intake-warning .site-header.scrolled { box-shadow: none; }
+
+.navbar-inner {
+  display: flex; align-items: center; justify-content: space-between;
+  gap: var(--space-6);
+  min-height: var(--nav-height);
+  transition: min-height var(--transition-base);
+}
+.site-header.scrolled .navbar-inner { min-height: 60px; }
+
+/* Logo — text lockup. 1.57:1 combination mark → 50-60px band (CLAUDE.md). */
+.navbar-logo { display: flex; align-items: center; gap: var(--space-3); flex-shrink: 0; }
+.navbar-logo:hover { color: inherit; }
+.logo-mark {
+  display: grid; place-items: center;
+  width: 44px; height: 44px; border-radius: var(--radius-full);
+  background: var(--color-white); color: var(--color-primary);
+  font-family: var(--font-heading); font-weight: 900; font-size: var(--font-size-xl);
+  flex-shrink: 0; transition: width var(--transition-base), height var(--transition-base);
+}
+.site-header.scrolled .logo-mark { width: 38px; height: 38px; font-size: var(--font-size-lg); }
+.logo-text { display: flex; flex-direction: column; line-height: 1.1; }
+.logo-name {
+  font-family: var(--font-heading); font-weight: 800;
+  font-size: var(--font-size-lg); color: var(--color-white);
+}
+.logo-tagline {
+  font-size: var(--font-size-xs); color: rgba(255,255,255,0.75);
+  font-style: italic;
+}
+
+/* Desktop links */
+.navbar-links { display: flex; align-items: center; gap: var(--space-6); list-style: none; }
+.navbar-links > li { position: relative; }
+.navbar-links > li > a {
+  display: inline-flex; align-items: center; gap: var(--space-1);
+  color: var(--color-white);
+  font-family: var(--font-body); font-size: var(--font-size-sm); font-weight: 600;
+  padding: var(--space-2) 0; position: relative;
+}
+.navbar-links > li > a:hover { color: var(--color-white); }
+
+/* Animated underline */
+.navbar-links > li > a::after {
+  content: ''; position: absolute; left: 0; bottom: 0;
+  width: 0; height: 2px; background: var(--color-white);
+  transition: width var(--transition-base);
+}
+.navbar-links > li > a:hover::after,
+.navbar-links > li > a:focus-visible::after,
+.navbar-links > li > a.is-active::after,
+.navbar-links > li > a[aria-current="page"]::after { width: 100%; }
+
+.nav-caret { width: 16px; height: 16px; }
+
+/* Services dropdown.
+   The markup carries inline style="display:none" as a cached-CSS failsafe
+   (CLAUDE.md → DROPDOWN — CRITICAL FAILSAFE). !important is what lets these
+   rules beat that inline style on hover/focus. Do not soften to a
+   visibility/opacity transition — the inline display:none would win. */
+.dropdown {
+  display: none;
+  position: absolute; top: 100%; left: 0;
+  background: var(--color-white); border-radius: var(--radius-md);
+  box-shadow: var(--shadow-lg);
+  padding: var(--space-2) 0; min-width: 260px; list-style: none;
+  z-index: 1001;
+}
+.has-dropdown:hover .dropdown,
+.has-dropdown:focus-within .dropdown { display: block !important; }
+
+.dropdown a {
+  display: block; padding: var(--space-2) var(--space-4);
+  color: var(--color-dark); font-size: var(--font-size-sm); font-weight: 500;
+}
+.dropdown a:hover { background: var(--color-light); color: var(--color-primary); }
+.dropdown-all { border-top: 1px solid var(--color-gray-light); margin-top: var(--space-2); padding-top: var(--space-2); }
+.dropdown-all a { font-weight: 700; color: var(--color-primary); }
+
+/* Nav CTA cluster */
+.navbar-cta { display: flex; align-items: center; gap: var(--space-4); flex-shrink: 0; }
+.navbar-phone {
+  display: inline-flex; align-items: center; gap: var(--space-2);
+  color: var(--color-white); font-weight: 700; font-size: var(--font-size-sm);
+  white-space: nowrap;
+}
+.navbar-phone:hover { color: var(--color-white); opacity: 0.85; }
+.navbar-phone i, .navbar-phone svg { width: 18px; height: 18px; }
+
+/* White pill on green nav — 9.30:1 against --color-primary-dark label */
+.btn-nav {
+  background: var(--color-white); color: var(--color-primary-dark);
+  border-color: var(--color-white); white-space: nowrap;
+}
+.btn-nav:hover { background: var(--color-light); color: var(--color-primary-dark); }
+
+/* Hamburger → X morph */
+.hamburger {
+  display: none; flex-direction: column; justify-content: center; gap: 5px;
+  width: 44px; height: 44px; padding: 0;
+  cursor: pointer; background: none; border: none;
+}
+.hamburger-line {
+  display: block; width: 24px; height: 2px; margin: 0 auto;
+  background: var(--color-white);
+  transition: transform var(--transition-base), opacity var(--transition-fast);
+}
+.hamburger.is-open .hamburger-line:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.hamburger.is-open .hamburger-line:nth-child(2) { opacity: 0; }
+.hamburger.is-open .hamburger-line:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+/* === Mobile full-screen overlay menu ===
+   [hidden] is honored explicitly: `display:flex` on .mobile-menu would
+   otherwise override the [hidden] UA rule and leave the menu on screen for
+   every desktop visitor. */
+.mobile-menu {
+  position: fixed; inset: 0; z-index: 999;
+  display: flex; flex-direction: column; justify-content: center; gap: var(--space-8);
+  padding: calc(var(--nav-height) + var(--space-8)) var(--space-6) var(--space-8);
+  background: rgba(22, 26, 23, 0.97);
+  backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+  overflow-y: auto;
+}
+.mobile-menu[hidden] { display: none; }
+
+.mobile-menu-links { list-style: none; display: flex; flex-direction: column; gap: var(--space-5); }
+.mobile-menu-links > li > a {
+  color: var(--color-white); font-family: var(--font-heading);
+  font-size: var(--font-size-2xl); font-weight: 800;
+}
+.mobile-submenu {
+  list-style: none; margin-top: var(--space-3);
+  padding-left: var(--space-4); border-left: 2px solid rgba(255,255,255,0.2);
+  display: flex; flex-direction: column; gap: var(--space-2);
+}
+.mobile-submenu a { color: rgba(255,255,255,0.8); font-size: var(--font-size-base); }
+
+/* Staggered fade-in of menu items */
+.mobile-menu-links > li,
+.mobile-menu-cta {
+  opacity: 0; transform: translateY(12px);
+  transition: opacity 0.35s ease, transform 0.35s ease;
+}
+.mobile-menu.is-open .mobile-menu-links > li,
+.mobile-menu.is-open .mobile-menu-cta { opacity: 1; transform: translateY(0); }
+.mobile-menu.is-open .mobile-menu-links > li:nth-child(1) { transition-delay: 0.05s; }
+.mobile-menu.is-open .mobile-menu-links > li:nth-child(2) { transition-delay: 0.10s; }
+.mobile-menu.is-open .mobile-menu-links > li:nth-child(3) { transition-delay: 0.15s; }
+.mobile-menu.is-open .mobile-menu-links > li:nth-child(4) { transition-delay: 0.20s; }
+.mobile-menu.is-open .mobile-menu-links > li:nth-child(5) { transition-delay: 0.25s; }
+.mobile-menu.is-open .mobile-menu-cta { transition-delay: 0.30s; }
+
+.mobile-menu-cta { display: flex; flex-direction: column; gap: var(--space-3); }
 
 /* === Hero Section === */
 .hero {
@@ -186,8 +397,29 @@ p { margin-bottom: var(--space-4); }
 .hero-trust { display: flex; gap: var(--space-6); justify-content: center; flex-wrap: wrap; }
 .hero-trust-item { display: flex; align-items: center; gap: var(--space-2); color: rgba(255,255,255,0.8); font-size: var(--font-size-sm); }
 
-/* === Section Defaults === */
-section { padding: var(--space-16) 0; }
+/* === Section Defaults ===
+   MANDATORY. The vertical padding prevents section collision and clipping;
+   position:relative anchors decorative ::before/::after accents; overflow:hidden
+   contains bleeding blobs. Do not remove. */
+section {
+  position: relative;
+  overflow: hidden;
+  padding: clamp(4rem, 10vh, 8rem) 0;
+}
+
+/* Hero overrides to full-bleed. This also drops the .hero padding-top that used
+   to clear the fixed header — `section.hero` (0,0,1,1) beats `.hero` (0,0,1,0).
+   That's intended: the hero is full-bleed and the translucent navbar floats over
+   its image. Phase 3's hero content wrapper handles its own top offset. */
+section.hero { padding: 0; }
+
+/* Pages whose first section is NOT a hero (about, contact, legal, 404) would
+   otherwise start underneath the fixed navbar and lose their opening heading.
+   Nothing else in the cascade offsets them. */
+body:not(.has-intake-warning) main > section:first-child:not(.hero) {
+  padding-top: calc(var(--nav-height) + clamp(2rem, 5vh, 4rem));
+}
+
 .section-header { text-align: center; margin-bottom: var(--space-12); }
 .section-header .eyebrow {
   display: inline-block; font-family: var(--font-heading); font-size: var(--font-size-xs);
@@ -291,34 +523,96 @@ section { padding: var(--space-16) 0; }
 .faq-item p { color: var(--color-gray); font-size: var(--font-size-sm); margin: 0; }
 
 /* === Footer === */
-.site-footer { background: var(--color-dark); color: rgba(255,255,255,0.8); padding: var(--space-16) 0 var(--space-8); }
-.footer-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: var(--space-8); margin-bottom: var(--space-12); }
+.site-footer { background: var(--color-dark); color: rgba(255,255,255,0.8); }
+.footer-top { padding: clamp(3rem, 7vh, 5rem) 0 var(--space-8); }
+.footer-grid { display: grid; grid-template-columns: 1.4fr 1fr 1fr 1.2fr; gap: var(--space-8); margin-bottom: var(--space-12); }
 .footer-col h4 { color: var(--color-white); font-size: var(--font-size-base); margin-bottom: var(--space-4); }
+.footer-col__subhead { margin-top: var(--space-6); }
 .footer-col ul { list-style: none; }
 .footer-col ul li { margin-bottom: var(--space-2); }
 .footer-col ul a { color: rgba(255,255,255,0.7); font-size: var(--font-size-sm); transition: color var(--transition-fast); }
 .footer-col ul a:hover { color: var(--color-accent); }
 .footer-col p { font-size: var(--font-size-sm); line-height: 1.8; }
-.footer-col .contact-item { display: flex; align-items: center; gap: var(--space-2); margin-bottom: var(--space-2); font-size: var(--font-size-sm); }
+.footer-col .contact-item {
+  display: flex; align-items: flex-start; gap: var(--space-2);
+  margin-bottom: var(--space-3); font-size: var(--font-size-sm);
+  color: rgba(255,255,255,0.8);
+}
+.footer-col a.contact-item:hover { color: var(--color-accent); }
+.contact-item i, .contact-item svg { width: 18px; height: 18px; flex-shrink: 0; margin-top: 2px; color: var(--color-accent); }
+.footer-cta { margin-top: var(--space-4); }
 
-/* AEO Entity Block */
-.aeo-entity { background: rgba(255,255,255,0.05); border-radius: var(--radius-md); padding: var(--space-4); margin-top: var(--space-4); }
-.aeo-entity h4 { font-size: var(--font-size-sm); margin-bottom: var(--space-2); }
+/* Footer logo lockup — dark background, so the mark inverts */
+.footer-logo { display: flex; align-items: center; gap: var(--space-3); margin-bottom: var(--space-4); }
+.footer-logo .logo-mark { background: var(--color-primary); color: var(--color-white); }
+
+/* AEO Entity Block.
+   The explicit white on h4 is load-bearing: base `h1..h6 { color: var(--color-dark) }`
+   would otherwise apply here (`.footer-col h4` doesn't match this element), painting
+   a near-black heading on a near-black panel at 1.1:1. */
+.aeo-entity { background: rgba(255,255,255,0.05); border-radius: var(--radius-md); padding: var(--space-6); margin-top: var(--space-4); }
+.aeo-entity h4 { color: var(--color-white); font-size: var(--font-size-sm); margin-bottom: var(--space-2); }
+.aeo-entity p { font-size: var(--font-size-sm); line-height: 1.8; margin: 0; color: rgba(255,255,255,0.7); }
 
 /* Trust Badges */
-.footer-trust { display: flex; gap: var(--space-4); align-items: center; flex-wrap: wrap; margin-top: var(--space-4); }
+.footer-trust { display: flex; gap: var(--space-2); align-items: center; flex-wrap: wrap; margin-top: var(--space-4); }
 .trust-badge {
   display: inline-flex; align-items: center; gap: var(--space-1);
   padding: var(--space-1) var(--space-3); border-radius: var(--radius-full);
   background: rgba(255,255,255,0.1); font-size: var(--font-size-xs); color: rgba(255,255,255,0.8);
 }
+.trust-badge i, .trust-badge svg { width: 14px; height: 14px; color: var(--color-accent); }
 
-.footer-bottom {
-  border-top: 1px solid rgba(255,255,255,0.1); padding-top: var(--space-6);
-  display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: var(--space-4);
+/* Footer legal utility row — sits above the copyright line */
+.footer-bottom { border-top: 1px solid rgba(255,255,255,0.1); padding: var(--space-6) 0; }
+.footer-legal-row {
+  display: flex; flex-wrap: wrap; align-items: center;
+  justify-content: center; gap: var(--space-2) var(--space-3);
+  margin-bottom: var(--space-4);
+  font-size: var(--font-size-xs); line-height: 1.6;
 }
-.footer-bottom p { font-size: var(--font-size-sm); margin: 0; color: rgba(255,255,255,0.5); }
+.footer-legal-row a { color: rgba(255,255,255,0.6); }
+.footer-legal-row a:hover { color: var(--color-accent); text-decoration: underline; }
+.footer-legal-row .divider { color: rgba(255,255,255,0.25); }
+
+.footer-bottom-bar {
+  display: flex; justify-content: space-between; align-items: center;
+  flex-wrap: wrap; gap: var(--space-4);
+}
+.footer-bottom-bar p { font-size: var(--font-size-sm); margin: 0; color: rgba(255,255,255,0.5); }
 .footer-credit a { color: var(--color-accent); }
+.footer-credit a:hover { text-decoration: underline; }
+
+/* === Cookie banner (legal-compliance.md) ===
+   Starts [hidden]; effects.js reveals it only when localStorage has no
+   dismissal flag. Sits above the sticky mobile CTA bar. */
+.cookie-banner {
+  position: fixed; left: var(--space-4); right: var(--space-4); bottom: 76px;
+  z-index: 990;
+  display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-4);
+  max-width: 800px; margin: 0 auto;
+  padding: var(--space-4) var(--space-6);
+  background: var(--color-dark); color: var(--color-white);
+  border-radius: var(--radius-md); box-shadow: 0 8px 32px rgba(0,0,0,0.25);
+  transform: translateY(140%);
+  transition: transform var(--transition-slow);
+}
+.cookie-banner[hidden] { display: none; }
+.cookie-banner.is-visible { transform: translateY(0); }
+.cookie-banner__text { flex: 1; min-width: 240px; font-size: var(--font-size-sm); line-height: 1.5; margin: 0; }
+.cookie-banner__text a { color: var(--color-accent); text-decoration: underline; }
+.cookie-banner__dismiss {
+  background: var(--color-primary); color: var(--color-white);
+  border: none; padding: 10px 20px; border-radius: var(--radius-md);
+  font-family: var(--font-body); font-weight: 700; font-size: var(--font-size-sm);
+  cursor: pointer; white-space: nowrap;
+  transition: background var(--transition-base), transform var(--transition-base);
+}
+.cookie-banner__dismiss:hover { background: var(--color-accent); transform: translateY(-1px); }
+
+@media (min-width: 769px) {
+  .cookie-banner { bottom: var(--space-6); }
+}
 
 /* === Ticker Strip === */
 .ticker-strip { background: var(--color-accent); overflow: hidden; padding: var(--space-3) 0; }
@@ -343,50 +637,57 @@ section { padding: var(--space-16) 0; }
 /* === Floating Mobile CTA === */
 .mobile-cta-bar {
   display: none; position: fixed; bottom: 0; left: 0; right: 0; z-index: 998;
-  background: var(--color-primary); padding: var(--space-3) var(--space-4);
+  gap: var(--space-2);
+  background: var(--color-dark); padding: var(--space-2) var(--space-3);
   box-shadow: 0 -4px 20px rgba(0,0,0,0.2);
 }
-.mobile-cta-bar .btn { width: 100%; justify-content: center; }
+.mobile-cta-bar .btn { flex: 1; justify-content: center; }
+.mobile-cta-bar .btn i, .mobile-cta-bar .btn svg { width: 16px; height: 16px; }
 
 /* === Animations === */
 [data-animate] { opacity: 0; transform: translateY(30px); transition: opacity 0.6s ease, transform 0.6s ease; }
 [data-animate].animated { opacity: 1; transform: translateY(0); }
 
+/* === Responsive: Tablet + below (1024px) — nav collapses === */
+@media (max-width: 1024px) {
+  .navbar-links { display: none; }
+  .navbar-cta { display: none; }
+  .hamburger { display: flex; z-index: 1001; }
+}
+@media (min-width: 1025px) {
+  /* Overlay menu is mobile-only; never let it paint on desktop. */
+  .mobile-menu { display: none !important; }
+}
+
 /* === Responsive: Tablet (768px) === */
 @media (max-width: 768px) {
-  h1 { font-size: var(--font-size-4xl); }
-  h2 { font-size: var(--font-size-3xl); }
-  .hero h1 { font-size: var(--font-size-4xl); }
-
-  .nav-links { display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(26, 43, 60, 0.98); flex-direction: column; align-items: center; justify-content: center; gap: var(--space-8); z-index: 999; }
-  .nav-links.active { display: flex; }
-  .nav-links a { font-size: var(--font-size-xl); }
-  .hamburger { display: flex; z-index: 1001; }
-  .header-cta { display: none; }
-
+  .footer-grid { grid-template-columns: 1fr 1fr; }
   .services-grid { grid-template-columns: 1fr 1fr; }
   .stats-grid { grid-template-columns: 1fr 1fr; gap: var(--space-6); }
   .about-split { grid-template-columns: 1fr; gap: var(--space-8); }
   .faq-grid { grid-template-columns: 1fr; }
-  .footer-grid { grid-template-columns: 1fr 1fr; }
 
-  .mobile-cta-bar { display: block; }
-  body { padding-bottom: 60px; }
+  .footer-bottom-bar { flex-direction: column; text-align: center; }
+
+  /* Sticky CTA bar; body padding compensates so the footer isn't covered. */
+  .mobile-cta-bar { display: flex; }
+  body { padding-bottom: 68px; }
 }
 
-/* === Responsive: Mobile (480px) === */
+/* === Responsive: Mobile (480px) ===
+   No h1/h2 font-size overrides here: the --fs-* tokens are clamp()-based and
+   already scale down to their minimum on small viewports. Re-declaring fixed
+   sizes would fight the fluid scale.
+   No `section { padding }` override either — the mandatory
+   clamp(4rem, 10vh, 8rem) is the floor and must not be undercut. */
 @media (max-width: 480px) {
-  h1 { font-size: var(--font-size-3xl); }
-  h2 { font-size: var(--font-size-2xl); }
-  .hero h1 { font-size: var(--font-size-3xl); }
   .hero-subtitle { font-size: var(--font-size-base); }
   .hero-buttons { flex-direction: column; align-items: center; }
 
   .services-grid { grid-template-columns: 1fr; }
   .stats-grid { grid-template-columns: 1fr 1fr; }
   .footer-grid { grid-template-columns: 1fr; }
-  .footer-bottom { flex-direction: column; text-align: center; }
 
-  section { padding: var(--space-12) 0; }
   .btn-lg { padding: var(--space-3) var(--space-6); font-size: var(--font-size-sm); }
+  .logo-tagline { display: none; }
 }
