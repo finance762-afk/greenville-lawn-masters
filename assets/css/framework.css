@@ -885,3 +885,236 @@ html.js-anim .reveal-delay-4 { transition-delay: 0.32s; }
   .btn-lg { padding: var(--space-3) var(--space-6); font-size: var(--font-size-sm); }
   .logo-tagline { display: none; }
 }
+
+/* ============================================================
+   PHASE 5 — SHARED COMPONENTS
+   Only genuinely cross-page components live here. Anything used by
+   exactly one page belongs in that page's inline <style> block
+   (CLAUDE.md tier matrix). Every value is a var() token.
+   ============================================================ */
+
+/* === Legal page shell ===
+   Shared by /privacy-policy/, /terms/, /cookie-policy/, /accessibility/.
+   Solid-colour 40vh hero, no photograph (legal-compliance.md §9). Each of
+   the four pages then adds its OWN distinct body components on top of this
+   shell — rights cards, clause list, cookie table, conformance checklist.
+
+   Selector is `.hero.hero--legal` (0,0,2,0), NOT `.hero--legal` (0,0,1,0):
+   `section.hero { padding: 0 }` is (0,0,1,1) and would otherwise win the
+   padding cascade, sliding the <h1> up behind the fixed navbar. */
+.hero.hero--legal {
+  min-height: 40vh;
+  display: flex;
+  align-items: center;
+  padding-block: calc(var(--nav-height) + var(--space-12)) var(--space-12);
+  background:
+    linear-gradient(
+      135deg,
+      var(--color-primary-dark) 0%,
+      var(--color-primary) 55%,
+      var(--color-accent) 140%
+    );
+  isolation: isolate;
+}
+.hero.hero--legal::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.05'/%3E%3C/svg%3E");
+  opacity: 0.3;
+  pointer-events: none;
+  z-index: 0;
+}
+.hero--legal .container { position: relative; z-index: 1; }
+.hero--legal h1 {
+  color: var(--color-white);
+  font-size: var(--fs-h2);
+  text-wrap: balance;
+  margin-bottom: var(--space-4);
+}
+.hero--legal .eyebrow-label { color: rgba(var(--color-white-rgb), 0.75); }
+
+/* Effective / Last-Updated stamp. Legal disclosures are dated documents; the
+   date is content, not chrome, so it sits in the hero rather than a footnote. */
+.legal-stamp {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-2) var(--space-4);
+  border: 1px solid rgba(var(--color-white-rgb), 0.28);
+  border-radius: var(--radius-full);
+  background: rgba(var(--color-white-rgb), 0.08);
+  color: rgba(var(--color-white-rgb), 0.92);
+  font-size: var(--font-size-sm);
+  backdrop-filter: blur(6px);
+}
+.legal-stamp i, .legal-stamp svg { width: 15px; height: 15px; }
+
+/* Single-column prose column, 65ch — CLAUDE.md forbids prose wider than 65ch. */
+.legal-prose {
+  max-width: 65ch;
+  margin-inline: auto;
+}
+.legal-prose h2 {
+  font-family: var(--font-heading);
+  color: var(--color-primary);
+  font-size: var(--font-size-2xl);
+  margin-top: var(--space-12);
+  margin-bottom: var(--space-3);
+  text-wrap: balance;
+  scroll-margin-top: calc(var(--nav-height) + var(--space-6));
+}
+.legal-prose h2:first-child { margin-top: 0; }
+.legal-prose h3 {
+  font-family: var(--font-heading);
+  color: var(--color-primary-dark);
+  font-size: var(--font-size-lg);
+  margin-top: var(--space-6);
+  margin-bottom: var(--space-2);
+  text-wrap: balance;
+  scroll-margin-top: calc(var(--nav-height) + var(--space-6));
+}
+.legal-prose p { color: var(--color-gray-dark); line-height: 1.75; }
+.legal-prose ul, .legal-prose ol {
+  margin: 0 0 var(--space-4) var(--space-6);
+  color: var(--color-gray-dark);
+}
+.legal-prose li { margin-bottom: var(--space-2); line-height: 1.7; }
+.legal-prose a {
+  color: var(--color-primary);
+  border-bottom: 1px solid rgba(var(--color-primary-rgb), 0.28);
+  transition: color var(--transition-fast), border-color var(--transition-fast);
+}
+.legal-prose a:hover {
+  color: var(--color-primary-dark);
+  border-bottom-color: var(--color-primary-dark);
+}
+.legal-prose strong { color: var(--color-black); }
+
+/* Anchor target highlight. /privacy-policy/#ccpa-rights is linked from the
+   footer legal row on EVERY page, so the section must announce itself when
+   the visitor lands on it rather than dumping them mid-document. */
+.legal-prose :target {
+  animation: legalTargetFlash 2.4s ease both;
+  border-radius: var(--radius-md);
+}
+@keyframes legalTargetFlash {
+  0%, 55% { background: var(--color-card-tint-3); box-shadow: 0 0 0 var(--space-3) var(--color-card-tint-3); }
+  100%    { background: transparent; box-shadow: 0 0 0 var(--space-3) transparent; }
+}
+
+/* Attorney-review disclaimer. Every compliance template ends with one. */
+.legal-disclaimer {
+  display: flex;
+  gap: var(--space-4);
+  align-items: flex-start;
+  background: var(--color-card-tint-3);
+  border-left: 4px solid var(--color-primary);
+  border-radius: var(--radius-md);
+  padding: var(--space-6);
+  margin-top: var(--space-12);
+  font-size: var(--font-size-sm);
+  font-style: italic;
+  line-height: 1.7;
+  color: var(--color-gray-dark);
+}
+.legal-disclaimer i, .legal-disclaimer svg {
+  width: 20px; height: 20px; flex-shrink: 0;
+  color: var(--color-primary);
+  font-style: normal;
+}
+
+/* Contact block that closes each legal document. */
+.legal-contact {
+  background: var(--color-light);
+  border: 1px solid var(--color-gray-light);
+  border-radius: var(--radius-lg);
+  padding: var(--space-6);
+  margin-top: var(--space-6);
+}
+.legal-contact p { margin-bottom: var(--space-2); }
+.legal-contact p:last-child { margin-bottom: 0; }
+.legal-contact .legal-contact__name {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  color: var(--color-primary);
+}
+
+/* === Consent fieldset (TCPA 2025/2026 · Texas TCPA Sept 2025) ===
+   Three SEPARATE, UNBUNDLED, never-pre-checked boxes. Base styling lives here
+   because two pages render it (/contact/ and any future form); the homepage
+   hero form overrides these with higher-specificity `.hero-form .…` rules for
+   its dark card. Do not merge the three boxes into one — bundling email, SMS,
+   and terms into a single checkbox is the exact pattern Texas outlawed. */
+.form-consent-fieldset {
+  border: 1px solid var(--color-gray-light);
+  border-radius: var(--radius-lg);
+  padding: var(--space-5) var(--space-6) var(--space-6);
+  margin-bottom: var(--space-6);
+  background: var(--color-white);
+}
+.form-consent-legend {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  color: var(--color-primary);
+  padding-inline: var(--space-3);
+  font-size: var(--font-size-base);
+}
+.form-consent-item {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-3);
+  padding-block: var(--space-3);
+  cursor: pointer;
+}
+.form-consent-item + .form-consent-item {
+  border-top: 1px solid var(--color-gray-light);
+}
+.consent-checkbox {
+  width: 18px;
+  height: 18px;
+  margin-top: 3px;
+  flex-shrink: 0;
+  accent-color: var(--color-primary);
+  cursor: pointer;
+}
+.consent-checkbox:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
+}
+.consent-label {
+  font-size: var(--font-size-sm);
+  line-height: 1.6;
+  color: var(--color-gray-dark);
+  cursor: pointer;
+}
+.consent-label strong { color: var(--color-black); }
+.consent-label a {
+  color: var(--color-primary);
+  text-decoration: underline;
+}
+.required-star { color: var(--color-danger); font-weight: 700; }
+.form-consent-required { background: var(--color-card-tint-1); border-radius: var(--radius-md); padding-inline: var(--space-3); }
+
+/* === Responsive map embed ===
+   Fixed width/height stripped from the Google iframe; aspect-ratio drives the
+   box instead, so it never overflows a phone (CLAUDE.md → GBP Map Embed). */
+.map-embed {
+  position: relative;
+  aspect-ratio: 16 / 10;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-card);
+  border: 1px solid var(--color-gray-light);
+}
+.map-embed iframe {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+  display: block;
+}
+@media (max-width: 600px) {
+  .map-embed { aspect-ratio: 4 / 3; }
+}

@@ -66,6 +66,30 @@ $geo           = null;   // REQUIRED — schema geo
 $gbpUrl        = '';     // REQUIRED — schema hasMap (GBP Share → Copy link)
 $gbpPlaceId    = '';     // REQUIRED — review link + directions link (ChIJ...)
 
+/* ── Legal entity ─────────────────────────────────────────── */
+// Phase 5 (compliance pages) needs these. CLAUDE.md lists both under "Required
+// Intake Questions"; build-plan.json supplied NEITHER.
+//
+// $companyEntityType stays EMPTY rather than guessed. "Greenville Lawn Masters,
+// LLC" printed on a Terms of Service page is a representation about corporate
+// form — if the business is actually a sole proprietorship, that statement is
+// false in the one document where falsity is most expensive. The legal pages
+// render $legalEntityName, which degrades to the plain trading name until the
+// real entity type lands here.
+$companyEntityType = '';   // REQUIRED — 'LLC' | 'Inc.' | 'Corporation' | 'Sole Proprietorship'…
+
+// State/county of OPERATION, taken from the business address — not a claim about
+// where the entity was formed. The Terms governing-law clause is written against
+// these because South Carolina is verifiably where the work is performed and
+// where a dispute over that work would be heard. If the entity was formed in
+// another state, the governing-law clause must be revisited with counsel.
+$companyState     = 'South Carolina';
+$companyStateAbbr = 'SC';
+$companyCounty    = 'Greenville';
+
+// Trading name + entity suffix, once known. Used verbatim in legal prose.
+$legalEntityName = $siteName . ($companyEntityType !== '' ? ', ' . $companyEntityType : '');
+
 /* ── Intake gap guard ─────────────────────────────────────── */
 // Anything listed here renders as *absent*, never as a placeholder: no fake
 // phone in the sticky CTA bar, no fake street in the footer NAP, no fake
@@ -79,6 +103,7 @@ if ($address['street'] === '') { $missingIntake[] = 'address.street'; }
 if (empty($businessHours))     { $missingIntake[] = 'businessHours'; }
 if ($geo === null)             { $missingIntake[] = 'geo (lat/lng)'; }
 if ($gbpUrl === '')            { $missingIntake[] = 'googleBusinessProfileUrl'; }
+if ($companyEntityType === '') { $missingIntake[] = 'companyEntityType'; }
 
 /* ── Lead form ────────────────────────────────────────────── */
 
@@ -143,7 +168,7 @@ $fonts = [
 ];
 
 $designStyle = 'elegant';   // build-plan design.style; archetype not yet assigned
-$cssVersion  = 4;           // bumped: Phase 4 added breadcrumb + service-page shared components
+$cssVersion  = 5;           // bumped: Phase 5 added legal-page + contact-form shared components
 
 $logoUrl = 'https://db.pageone.cloud/storage/v1/object/public/client-assets/'
          . 'greenville-lawn-masters/logo/1783619426197-14ls2z-qt_q_95.png';
