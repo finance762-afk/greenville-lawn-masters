@@ -82,6 +82,12 @@ if (!empty($missingIntake)) { $bodyClasses[] = 'has-intake-warning'; }
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+    <!-- Fail-open reveal gate. Every `opacity: 0` reveal rule in framework.css is
+         scoped to `html.js-anim`, so a blocked or broken JS bundle leaves the page
+         fully visible instead of blank. Inline and synchronous on purpose: setting
+         it from a deferred script would let gated content paint, then vanish. -->
+    <script>document.documentElement.classList.add('js-anim');</script>
+
     <?php echo generateMetaTags($pageTitle, $pageDescription, $canonicalUrl, [
         'ogImage' => $ogImage,
         'ogType'  => $ogType,

@@ -82,12 +82,17 @@ if ($gbpUrl === '')            { $missingIntake[] = 'googleBusinessProfileUrl'; 
 
 /* ── Lead form ────────────────────────────────────────────── */
 
-// Taken from build-plan.json `form_action`.
-// NOTE: CLAUDE.md mandates https://db.pageone.cloud/functions/v1/leads/{slug}
-// for all client forms. build-plan.json specifies a different host and path.
-// Unresolved conflict — confirm the live endpoint before Phase 4 builds any
-// form, or leads will post into the void.
-$formAction = 'https://design.pageone.cloud/api/leads/' . $slug;
+// RESOLVED IN PHASE 3 (was flagged unresolved in Phase 2).
+// build-plan.json `form_action` said https://design.pageone.cloud/api/leads/{slug}.
+// CLAUDE.md, SKILL.md, and the Phase 3 build prompt all independently mandate
+// https://db.pageone.cloud/functions/v1/leads/{slug}. CLAUDE.md is the
+// enforcement layer and wins over a data field. Both hosts answer (GET → 405
+// "method not allowed", i.e. the route exists and wants POST), so the probe
+// could not break the tie on its own; the documented contract did.
+//
+// STILL VERIFY WITH A LIVE TEST SUBMISSION BEFORE LAUNCH. If leads land in the
+// Portal, this is right. If they don't, the other host is the live one.
+$formAction = 'https://db.pageone.cloud/functions/v1/leads/' . $slug;
 
 // Hidden field `_consent_version` on every form (CLAUDE.md TCPA section).
 $consentVersion = 'v2.1';
@@ -138,7 +143,7 @@ $fonts = [
 ];
 
 $designStyle = 'elegant';   // build-plan design.style; archetype not yet assigned
-$cssVersion  = 2;           // bumped: Phase 2 rewrote brand tokens + nav/footer CSS
+$cssVersion  = 3;           // bumped: Phase 3 added tinted service cards + reveal system
 
 $logoUrl = 'https://db.pageone.cloud/storage/v1/object/public/client-assets/'
          . 'greenville-lawn-masters/logo/1783619426197-14ls2z-qt_q_95.png';
@@ -362,3 +367,42 @@ $targetRadius = 25;   // miles
 // None supplied at intake. footer.php renders only platforms the client uses.
 
 $socialLinks = [];
+
+/* ── Reviews ──────────────────────────────────────────────── */
+// INTAKE GAP. build-plan.json `reviews` is an empty array and no Google rating,
+// review count, or GBP URL was supplied.
+//
+// This stays empty. Testimonials are statements attributed to real named people:
+// writing them is fabricating an endorsement, which the FTC Endorsement Guides
+// treat as a deceptive practice, and CLAUDE.md separately forbids inventing
+// review numbers or ratings. The homepage renders a real job-photo proof section
+// in this slot until genuine reviews exist.
+//
+// Shape, once populated — the homepage carousel reads this directly:
+//   ['name' => 'First L.', 'location' => 'Mauldin, SC', 'service' => 'Lawn Mowing',
+//    'rating' => 5, 'text' => '…', 'date' => 'March 2026']
+$reviews = [];
+
+/* ── Photo library ────────────────────────────────────────── */
+// The six real client photos from build-plan.json, downloaded to /assets/images/
+// rather than hotlinked from the Supabase bucket (the LCP hero must not depend on
+// a third-party host). Source PNGs were 370x278; the hero is upscaled to 1600px.
+//
+// build-plan.json shipped every photo with alt:"", context:"other", and
+// quality_score:null, and `recommended_hero_image` pointed at the LOGO file.
+// The allocator clearly never ran on this build. Alt text below was written by
+// looking at each image; the hero was chosen the same way.
+$photoLibrary = [
+    'hero'         => ['src' => '/assets/images/hero-mauldin-front-lawn.jpg',      'w' => 1600, 'h' => 1202, 'alt' => 'Freshly mowed front lawn and driveway at a Craftsman-style home in a Mauldin, SC neighborhood'],
+    'mowing'       => ['src' => '/assets/images/lawn-mowing-mauldin-sc.jpg',       'w' => 370, 'h' => 278, 'alt' => 'Greenville Lawn Masters crew member mowing a fenced backyard lawn in Mauldin, SC'],
+    'hedges'       => ['src' => '/assets/images/hedge-trimming-mauldin-sc.jpg',    'w' => 370, 'h' => 278, 'alt' => 'Greenville Lawn Masters crew member trimming foundation hedges at a brick home in Mauldin, SC'],
+    'front_lawn'   => ['src' => '/assets/images/front-lawn-mauldin-sc.jpg',        'w' => 370, 'h' => 278, 'alt' => 'Dense green front lawn and driveway at a Mauldin, SC home'],
+    'backyard'     => ['src' => '/assets/images/backyard-lawn-beds-mauldin-sc.jpg','w' => 370, 'h' => 278, 'alt' => 'Backyard turf bordered by mulched planting beds and flowering perennials at a Mauldin, SC home'],
+    'mulch_bed'    => ['src' => '/assets/images/mulched-flower-bed-mauldin-sc.jpg','w' => 370, 'h' => 278, 'alt' => 'Freshly mulched flower bed beside the front walk of a Craftsman home in Mauldin, SC'],
+    'driveway'     => ['src' => '/assets/images/clean-driveway-mauldin-sc.jpg',    'w' => 370, 'h' => 278, 'alt' => 'Clean concrete driveway and walkway at a two-story home in Mauldin, SC'],
+];
+
+// Absolute, currently-resolvable URL for og:image. $siteUrl still points at a
+// placeholder host, so an absolute URL under it would 404 for every scraper.
+$ogImageUrl = 'https://db.pageone.cloud/storage/v1/object/public/client-assets/'
+            . 'greenville-lawn-masters/photos/1783619518888-b5idvx-cr_w_370_h_278.png';

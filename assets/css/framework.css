@@ -16,8 +16,10 @@
   --color-accent: #4E9C52;           /* lighter tint of the brand green */
   --color-accent-rgb: 78, 156, 82;
   --color-white: #ffffff;
+  --color-white-rgb: 255, 255, 255;
   --color-black: #111111;
   --color-dark: #161A17;             /* footer / dark sections */
+  --color-dark-rgb: 22, 26, 23;
   --color-dark-alt: #1F2621;
   --color-light: #F4F7F4;
   --color-gray: #6b7280;
@@ -150,6 +152,15 @@ p { margin-bottom: var(--space-4); overflow-wrap: anywhere; }
   }
 }
 
+/* === Screen-reader-only text === */
+/* Gives short link labels ("Learn more") a unique accessible name without
+   changing the visible text. Never `display:none` — that hides it from AT too. */
+.sr-only {
+  position: absolute; width: 1px; height: 1px;
+  padding: 0; margin: -1px; overflow: hidden;
+  clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0;
+}
+
 /* === Skip Link Accessibility === */
 .skip-link {
   position: absolute; top: -100%; left: 50%; transform: translateX(-50%);
@@ -185,6 +196,10 @@ p { margin-bottom: var(--space-4); overflow-wrap: anywhere; }
 .btn-accent:hover { background: var(--color-primary); border-color: var(--color-primary); color: var(--color-white); }
 .btn-outline-white { background: transparent; color: var(--color-white); border-color: var(--color-white); }
 .btn-outline-white:hover { background: var(--color-white); color: var(--color-primary); }
+/* Outline button for light backgrounds — CLAUDE.md "View All N Services" CTA */
+.btn-secondary { background: transparent; color: var(--color-primary); border-color: var(--color-primary); }
+.btn-secondary:hover { background: var(--color-primary); color: var(--color-white); }
+.btn-block { display: flex; width: 100%; }
 .btn-lg { padding: var(--space-4) var(--space-8); font-size: var(--font-size-base); }
 .btn-sm { padding: var(--space-2) var(--space-4); font-size: var(--font-size-xs); }
 
@@ -429,8 +444,105 @@ body:not(.has-intake-warning) main > section:first-child:not(.hero) {
 .section-header h2 { margin-bottom: var(--space-4); }
 .section-header p { color: var(--color-gray); max-width: 600px; margin: 0 auto; }
 
+/* === Shared content primitives (CLAUDE.md Required Components) === */
+.eyebrow-label {
+  display: inline-block; font-family: var(--font-heading); font-size: var(--font-size-xs);
+  font-weight: 700; text-transform: uppercase; letter-spacing: 2px;
+  color: var(--color-primary); margin-bottom: var(--space-3);
+}
+.section-subtitle {
+  display: block; font-family: var(--font-heading); font-style: italic;
+  font-weight: 400; font-size: var(--font-size-xl); color: var(--color-accent);
+  margin-bottom: var(--space-4);
+}
+/* Emphasis word inside a heading. Two-tone treatment, not a separate font —
+   this build carries only two families (CLAUDE.md: no more than 2 fonts). */
+.text-accent { color: var(--color-accent); font-style: italic; }
+
+/* AEO answer-first blocks. Both are named in the Speakable cssSelector array,
+   so the class must stay on the element that holds the actual answer text. */
+.hero-answer, .answer-block {
+  font-size: var(--font-size-lg); line-height: 1.7; color: var(--color-gray-dark);
+  max-width: 65ch; margin-inline: auto; margin-bottom: var(--space-4);
+}
+
+/* === SVG Section Dividers (design-system.md C3) ===
+   Absolutely positioned inside the section they close, so they sit correctly
+   over gradients and photo backgrounds. `section` already sets position:relative
+   and overflow:hidden, which contains them. The svg fill is always the NEXT
+   section's background colour. */
+.svg-divider {
+  position: absolute; left: 0; right: 0; bottom: 0;
+  width: 100%; line-height: 0; z-index: 1; pointer-events: none;
+}
+.svg-divider svg { display: block; width: 100%; height: 100%; }
+
 /* === Service Cards === */
-.services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-6); }
+/* 4 columns desktop / 2 tablet / 1 mobile — exact spec, CLAUDE.md Required
+   Components. Responsive steps live in the breakpoint block at the foot of
+   this file so they win over the base rule. */
+.services-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: var(--space-6); }
+
+/* Tint utility classes — rotated across cards, never two the same adjacent */
+.card-tint-1 { background: var(--color-card-tint-1); box-shadow: none; }
+.card-tint-2 { background: var(--color-card-tint-2); box-shadow: none; }
+.card-tint-3 { background: var(--color-card-tint-3); box-shadow: none; }
+.card-tint-neutral { background: var(--color-card-tint-neutral); box-shadow: none; }
+
+/* Tinted image card */
+.service-card-with-image {
+  border-radius: var(--radius-md); overflow: hidden;
+  display: flex; flex-direction: column;
+  transition: transform var(--transition-base), box-shadow var(--transition-base);
+}
+.service-card-with-image:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); }
+.service-card__image { position: relative; aspect-ratio: 5 / 3; overflow: hidden; }
+.service-card__image img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform var(--transition-slow); }
+.service-card-with-image:hover .service-card__image img { transform: scale(1.05); }
+.service-card__body {
+  padding: var(--space-6) var(--space-4) var(--space-4);
+  text-align: center; display: flex; flex-direction: column; align-items: center;
+  gap: var(--space-2); position: relative; flex: 1;
+}
+.service-card__icon {
+  width: 56px; height: 56px; border-radius: 50%;
+  background: var(--color-white); box-shadow: var(--shadow-md);
+  display: flex; align-items: center; justify-content: center;
+  margin-top: -44px; margin-bottom: var(--space-1);
+  color: var(--color-accent);
+  transition: transform var(--transition-base), color var(--transition-base);
+}
+.service-card-with-image:hover .service-card__icon { transform: rotate(-6deg) scale(1.06); color: var(--color-primary); }
+.service-card__icon i, .service-card__icon svg { width: 26px; height: 26px; }
+.service-card-with-image h3 {
+  font-family: var(--font-heading); color: var(--color-primary);
+  margin: 0; font-size: var(--font-size-xl); line-height: 1.2;
+}
+.service-card__desc { color: var(--color-text, var(--color-gray-dark)); margin: 0; font-size: var(--font-size-sm); line-height: 1.55; }
+.service-card-with-image ul {
+  list-style: none; padding: 0; margin: var(--space-1) 0 0; width: 100%;
+  text-align: left; display: flex; flex-direction: column; gap: var(--space-1);
+  border-top: 1px solid rgba(0,0,0,0.06); padding-top: var(--space-4);
+}
+.service-card-with-image ul li {
+  font-size: var(--font-size-sm); color: var(--color-gray-dark);
+  padding-left: 1.25rem; position: relative;
+}
+.service-card-with-image ul li::before {
+  content: "\2022"; color: var(--color-accent); font-weight: 700;
+  position: absolute; left: 0.25rem; top: 0;
+}
+.service-card__cta {
+  margin-top: auto; color: var(--color-accent); font-weight: 600;
+  text-decoration: none; font-size: var(--font-size-sm);
+  border-top: 1px solid rgba(0,0,0,0.06); width: 100%; text-align: center;
+  padding: var(--space-2) 0 0; transition: color var(--transition-base);
+}
+.service-card__cta::after { content: " \2192"; display: inline-block; transition: transform var(--transition-base); }
+.service-card__cta:hover { color: var(--color-primary); }
+.service-card__cta:hover::after { transform: translateX(3px); }
+
+/* Legacy card — retained for pages not yet migrated to the tinted image card. */
 .service-card {
   background: var(--color-white); border-radius: var(--radius-lg); padding: var(--space-8);
   box-shadow: var(--shadow-card); transition: all var(--transition-base);
@@ -644,9 +756,48 @@ body:not(.has-intake-warning) main > section:first-child:not(.hero) {
 .mobile-cta-bar .btn { flex: 1; justify-content: center; }
 .mobile-cta-bar .btn i, .mobile-cta-bar .btn svg { width: 16px; height: 16px; }
 
-/* === Animations === */
-[data-animate] { opacity: 0; transform: translateY(30px); transition: opacity 0.6s ease, transform 0.6s ease; }
-[data-animate].animated { opacity: 1; transform: translateY(0); }
+/* === Animations — FAIL-OPEN (design-system.md C10.5) ===
+   Every opacity:0 rule is gated behind `html.js-anim`, which head.php sets from
+   an inline script. If JS is blocked or errors, the class never lands, the rules
+   never match, and every section renders visible. A bare `[data-animate]
+   { opacity: 0 }` would leave the whole page blank in that case — never write one.
+   animations.js also force-reveals anything still hidden 2s after DOMContentLoaded. */
+html.js-anim [data-animate] { opacity: 0; transform: translateY(30px); transition: opacity 0.6s ease, transform 0.6s ease; }
+html.js-anim [data-animate].animated,
+html.js-anim [data-animate].revealed { opacity: 1; transform: translateY(0); }
+
+/* Directional reveals. Mix at least 3 directions per page — never all fade-up. */
+html.js-anim .reveal-up,
+html.js-anim .reveal-down,
+html.js-anim .reveal-left,
+html.js-anim .reveal-right,
+html.js-anim .reveal-scale {
+  opacity: 0;
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+html.js-anim .reveal-up    { transform: translateY(24px); }
+html.js-anim .reveal-down  { transform: translateY(-24px); }
+html.js-anim .reveal-left  { transform: translateX(-28px); }
+html.js-anim .reveal-right { transform: translateX(28px); }
+html.js-anim .reveal-scale { transform: scale(0.94); }
+
+html.js-anim .reveal-up.revealed,
+html.js-anim .reveal-down.revealed,
+html.js-anim .reveal-left.revealed,
+html.js-anim .reveal-right.revealed,
+html.js-anim .reveal-scale.revealed { opacity: 1; transform: none; }
+
+html.js-anim .reveal-delay-1 { transition-delay: 0.08s; }
+html.js-anim .reveal-delay-2 { transition-delay: 0.16s; }
+html.js-anim .reveal-delay-3 { transition-delay: 0.24s; }
+html.js-anim .reveal-delay-4 { transition-delay: 0.32s; }
+
+/* Reduced motion: no travel, no stagger — content simply appears. */
+@media (prefers-reduced-motion: reduce) {
+  html.js-anim [data-animate],
+  html.js-anim .reveal-up, html.js-anim .reveal-down, html.js-anim .reveal-left,
+  html.js-anim .reveal-right, html.js-anim .reveal-scale { transform: none; transition-delay: 0s; }
+}
 
 /* === Responsive: Tablet + below (1024px) — nav collapses === */
 @media (max-width: 1024px) {
@@ -659,10 +810,15 @@ body:not(.has-intake-warning) main > section:first-child:not(.hero) {
   .mobile-menu { display: none !important; }
 }
 
+/* === Services grid steps (CLAUDE.md: 4 desktop / 2 tablet / 1 mobile) ===
+   Declared before the generic breakpoint blocks below so a later, narrower
+   media query can still take over at 600px. */
+@media (max-width: 1199px) { .services-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 600px)  { .services-grid { grid-template-columns: 1fr; } }
+
 /* === Responsive: Tablet (768px) === */
 @media (max-width: 768px) {
   .footer-grid { grid-template-columns: 1fr 1fr; }
-  .services-grid { grid-template-columns: 1fr 1fr; }
   .stats-grid { grid-template-columns: 1fr 1fr; gap: var(--space-6); }
   .about-split { grid-template-columns: 1fr; gap: var(--space-8); }
   .faq-grid { grid-template-columns: 1fr; }
@@ -684,7 +840,6 @@ body:not(.has-intake-warning) main > section:first-child:not(.hero) {
   .hero-subtitle { font-size: var(--font-size-base); }
   .hero-buttons { flex-direction: column; align-items: center; }
 
-  .services-grid { grid-template-columns: 1fr; }
   .stats-grid { grid-template-columns: 1fr 1fr; }
   .footer-grid { grid-template-columns: 1fr; }
 
