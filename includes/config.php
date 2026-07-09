@@ -143,7 +143,7 @@ $fonts = [
 ];
 
 $designStyle = 'elegant';   // build-plan design.style; archetype not yet assigned
-$cssVersion  = 3;           // bumped: Phase 3 added tinted service cards + reveal system
+$cssVersion  = 4;           // bumped: Phase 4 added breadcrumb + service-page shared components
 
 $logoUrl = 'https://db.pageone.cloud/storage/v1/object/public/client-assets/'
          . 'greenville-lawn-masters/logo/1783619426197-14ls2z-qt_q_95.png';
@@ -350,6 +350,79 @@ $servicePages = [
     ['slug' => 'dethatching',                        'title' => 'Dethatching',                        'type' => 'service',       'primary_keyword' => 'dethatching Mauldin SC'],
 ];
 
+/* ── Service page card copy ───────────────────────────────── */
+// Icon, one-line description, and exactly three benefit bullets for the
+// mandated `.service-card-with-image` component (CLAUDE.md → Required
+// Components). Keyed by $servicePages slug, so a card can never describe a
+// page that does not exist.
+//
+// Lives here, not in services/index.php, because TWO call sites render this
+// component: the services listing grid and the "Other Services You May Need"
+// block at the foot of all eleven service pages. Both read it through
+// includes/service-card.php, so the pattern cannot drift between them.
+//
+// Bullets are 3-6 words and benefit-driven; descriptions are one sentence of
+// ≤14 words saying what the page actually is. Icons are ordered so no two
+// ADJACENT cards repeat one when $servicePages renders in config order.
+
+$serviceCardMeta = [
+    'lawn-care-services' => [
+        'icon'    => 'scissors',
+        'desc'    => 'Recurring mowing, feeding, weed control, aeration, and repair on one schedule.',
+        'bullets' => ['Weekly or biweekly routes', 'Feeding timed to grass type', 'Eight services, one crew'],
+    ],
+    'tree-shrub-services' => [
+        'icon'    => 'tree-pine',
+        'desc'    => 'Trimming, pruning, and cleanup for hedges, shrubs, small trees, and brush.',
+        'bullets' => ['Hedges shaped off windows', 'Storm debris cleared fast', 'Clippings hauled, not left'],
+    ],
+    'spring-fall-cleanup' => [
+        'icon'    => 'wind',
+        'desc'    => 'Seasonal leaf removal, bed cleanout, and debris haul-off twice a year.',
+        'bullets' => ['Leaf and storm debris removed', 'Beds cleared and re-edged', 'Hauled off, not curbside'],
+    ],
+    'mulch-installation' => [
+        'icon'    => 'flower-2',
+        'desc'    => 'Fresh mulch spread over cleaned, re-edged beds around foundations and trees.',
+        'bullets' => ['Beds cleaned and re-edged', 'Even depth, crisp lines', 'Holds moisture through summer'],
+    ],
+    'flower-bed-shrub-planting' => [
+        'icon'    => 'sprout',
+        'desc'    => 'Bed cleanup, planting, and care for flowers, shrubs, and small trees.',
+        'bullets' => ['Plants matched to sun', 'Beds cleaned before planting', 'Curb appeal that lasts'],
+    ],
+    'sod-installation' => [
+        'icon'    => 'layers',
+        'desc'    => 'New sod laid over graded, prepared soil for an instant lawn.',
+        'bullets' => ['Soil graded and prepped', 'Warm-season sod varieties', 'Watering plan on handover'],
+    ],
+    'pressure-washing' => [
+        'icon'    => 'spray-can',
+        'desc'    => 'Surface cleaning for driveways, sidewalks, patios, and property walkways.',
+        'bullets' => ['Driveways and sidewalks', 'Lifts algae and stains', 'Pressure matched to concrete'],
+    ],
+    'gutter-cleaning' => [
+        'icon'    => 'droplets',
+        'desc'    => 'Clearing gutters and downspouts to keep water moving off the roof.',
+        'bullets' => ['Downspouts flushed clear', 'Protects fascia and foundation', 'Debris bagged and removed'],
+    ],
+    'fence-line-clearing-debris-hauling' => [
+        'icon'    => 'trash-2',
+        'desc'    => 'Overgrowth cleared along fence lines and yard debris hauled off-site.',
+        'bullets' => ['Overgrown fence lines cleared', 'Brush and debris hauled', 'Property lines reclaimed'],
+    ],
+    'soil-testing-lime-application' => [
+        'icon'    => 'flask-conical',
+        'desc'    => 'Soil tested for pH, then lime and nutrients applied to correct it.',
+        'bullets' => ['Soil pH measured first', 'Lime corrects clay acidity', 'Feeds stronger root growth'],
+    ],
+    'dethatching' => [
+        'icon'    => 'shovel',
+        'desc'    => 'Dead thatch pulled so water and nutrients reach the soil again.',
+        'bullets' => ['Thick thatch pulled out', 'Water reaches the roots', 'Stronger, more resilient turf'],
+    ],
+];
+
 /* ── Service areas ────────────────────────────────────────── */
 // build-plan.json service_areas held one entry with an empty `city` and
 // zip 29662 — resolved to Mauldin from the business address.
@@ -392,14 +465,72 @@ $reviews = [];
 // quality_score:null, and `recommended_hero_image` pointed at the LOGO file.
 // The allocator clearly never ran on this build. Alt text below was written by
 // looking at each image; the hero was chosen the same way.
+// PHASE 4 CORRECTION: 'hero' is not a seventh photograph. It is an upscale of
+// 'front_lawn' — pixel comparison puts them at RMSE 0.0027, i.e. the same image.
+// Its alt said "Craftsman-style home" while front_lawn's said "a Mauldin, SC
+// home" for the identical frame. Unified below. Never place both on one page.
+//
+// The library therefore holds SIX distinct photographs, and only TWO of them
+// (mowing, hedges) show work actually being performed. The rest are outcome
+// shots of finished properties. See $servicePhotos for what that costs us.
 $photoLibrary = [
-    'hero'         => ['src' => '/assets/images/hero-mauldin-front-lawn.jpg',      'w' => 1600, 'h' => 1202, 'alt' => 'Freshly mowed front lawn and driveway at a Craftsman-style home in a Mauldin, SC neighborhood'],
     'mowing'       => ['src' => '/assets/images/lawn-mowing-mauldin-sc.jpg',       'w' => 370, 'h' => 278, 'alt' => 'Greenville Lawn Masters crew member mowing a fenced backyard lawn in Mauldin, SC'],
     'hedges'       => ['src' => '/assets/images/hedge-trimming-mauldin-sc.jpg',    'w' => 370, 'h' => 278, 'alt' => 'Greenville Lawn Masters crew member trimming foundation hedges at a brick home in Mauldin, SC'],
-    'front_lawn'   => ['src' => '/assets/images/front-lawn-mauldin-sc.jpg',        'w' => 370, 'h' => 278, 'alt' => 'Dense green front lawn and driveway at a Mauldin, SC home'],
-    'backyard'     => ['src' => '/assets/images/backyard-lawn-beds-mauldin-sc.jpg','w' => 370, 'h' => 278, 'alt' => 'Backyard turf bordered by mulched planting beds and flowering perennials at a Mauldin, SC home'],
+    'front_lawn'   => ['src' => '/assets/images/front-lawn-mauldin-sc.jpg',        'w' => 370, 'h' => 278, 'alt' => 'Dense green front lawn and concrete driveway at a two-story home in a Mauldin, SC neighborhood'],
+    'backyard'     => ['src' => '/assets/images/backyard-lawn-beds-mauldin-sc.jpg','w' => 370, 'h' => 278, 'alt' => 'Backyard turf running between mulched planting beds and a wood privacy fence at a Mauldin, SC home'],
     'mulch_bed'    => ['src' => '/assets/images/mulched-flower-bed-mauldin-sc.jpg','w' => 370, 'h' => 278, 'alt' => 'Freshly mulched flower bed beside the front walk of a Craftsman home in Mauldin, SC'],
     'driveway'     => ['src' => '/assets/images/clean-driveway-mauldin-sc.jpg',    'w' => 370, 'h' => 278, 'alt' => 'Clean concrete driveway and walkway at a two-story home in Mauldin, SC'],
+];
+
+// Backward compatibility: index.php (Phase 3) still reads $photoLibrary['hero'].
+// Same frame as front_lawn, 1600px wide, so it stays addressable by that key.
+$photoLibrary['hero'] = [
+    'src' => '/assets/images/hero-mauldin-front-lawn.jpg',
+    'w' => 1600, 'h' => 1202, 'alt' => $photoLibrary['front_lawn']['alt'],
+];
+
+/* ── Hero-size renditions ─────────────────────────────────────
+   Every source photo is 370x278. A 370px file stretched across a 1920px hero
+   is mush, so each hero photo is resampled to 1600x1202 (Lanczos, q82) exactly
+   as Phase 3 produced hero-mauldin-front-lawn.jpg from front-lawn-mauldin-sc.jpg.
+   These are interpolations, NOT extra detail — the heavy hero gradient overlay is
+   what makes them read as sharp. Replace with real high-resolution originals when
+   the client supplies them; nothing else has to change. */
+$heroRenditions = [
+    'front_lawn' => '/assets/images/hero-mauldin-front-lawn.jpg',
+    'mowing'     => '/assets/images/hero-mauldin-lawn-mowing.jpg',
+    'hedges'     => '/assets/images/hero-mauldin-hedge-trimming.jpg',
+    'backyard'   => '/assets/images/hero-mauldin-backyard-beds.jpg',
+    'mulch_bed'  => '/assets/images/hero-mauldin-mulch-bed.jpg',
+    'driveway'   => '/assets/images/hero-mauldin-clean-driveway.jpg',
+];
+
+/* ── Service page → photo assignment ──────────────────────────
+   Six photographs across eleven service pages. Reuse is unavoidable; dishonesty
+   is not. A photo is assigned to a page only when the frame genuinely relates to
+   that page's subject, and captions describe WHAT IS IN THE FRAME. No caption or
+   alt attribute anywhere claims a photo shows a service being performed unless it
+   does — that would be a fabricated claim in an accessibility attribute, and it
+   would propagate into sitemap-images.xml at Phase 5.
+
+   `photo_gap => true` marks a page with NO photograph depicting its service. Those
+   pages use honest outcome/context imagery and say nothing about what the picture
+   shows. CLAUDE.md's CLIENT PHOTO GATE blocks Phase 5 polish until real photos of
+   these five services exist:
+       gutter cleaning · sod installation · dethatching
+       soil testing & lime application · fence line clearing & debris hauling */
+$servicePhotos = [
+    'lawn-care-services'                 => ['hero' => 'front_lawn', 'body' => ['mowing', 'backyard', 'mulch_bed']],
+    'tree-shrub-services'                => ['hero' => 'hedges',     'body' => ['hedges', 'backyard', 'mulch_bed']],
+    'spring-fall-cleanup'                => ['hero' => 'backyard',   'body' => ['backyard', 'mulch_bed', 'front_lawn']],
+    'mulch-installation'                 => ['hero' => 'mulch_bed',  'body' => ['mulch_bed', 'backyard', 'front_lawn']],
+    'flower-bed-shrub-planting'          => ['hero' => 'backyard',   'body' => ['backyard', 'mulch_bed', 'hedges']],
+    'sod-installation'                   => ['hero' => 'front_lawn', 'body' => ['front_lawn', 'backyard', 'mulch_bed'], 'photo_gap' => true],
+    'pressure-washing'                   => ['hero' => 'driveway',   'body' => ['driveway', 'front_lawn', 'mulch_bed']],
+    'gutter-cleaning'                    => ['hero' => 'driveway',   'body' => ['driveway', 'front_lawn'],              'photo_gap' => true],
+    'fence-line-clearing-debris-hauling' => ['hero' => 'backyard',   'body' => ['backyard', 'hedges', 'front_lawn'],    'photo_gap' => true],
+    'soil-testing-lime-application'      => ['hero' => 'front_lawn', 'body' => ['front_lawn', 'backyard', 'mowing'],    'photo_gap' => true],
+    'dethatching'                        => ['hero' => 'mowing',     'body' => ['mowing', 'front_lawn', 'backyard'],    'photo_gap' => true],
 ];
 
 // Absolute, currently-resolvable URL for og:image. $siteUrl still points at a

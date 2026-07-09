@@ -11,6 +11,7 @@
   --color-primary: #2C6F2F;          /* script "Greenville" + badge ring */
   --color-primary-rgb: 44, 111, 47;
   --color-primary-dark: #1F5122;     /* pressed states, nav CTA label */
+  --color-primary-dark-rgb: 31, 81, 34;   /* Phase 4: needed for rgba() hero overlays */
   --color-secondary: #3D4543;        /* the dog's apron */
   --color-secondary-rgb: 61, 69, 67;
   --color-accent: #4E9C52;           /* lighter tint of the brand green */
@@ -798,6 +799,44 @@ html.js-anim .reveal-delay-4 { transition-delay: 0.32s; }
   html.js-anim .reveal-up, html.js-anim .reveal-down, html.js-anim .reveal-left,
   html.js-anim .reveal-right, html.js-anim .reveal-scale { transform: none; transition-delay: 0s; }
 }
+
+/* === Breadcrumb (Phase 4) ===
+   Shared by all 11 service pages + /services/. Sits inside the hero, over the
+   photo, so its colours are white-on-dark rather than the body palette. Mirrors
+   the BreadcrumbList JSON-LD on every non-homepage. */
+.breadcrumb {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-2);
+  list-style: none;
+  margin-bottom: var(--space-6);
+  font-size: var(--font-size-sm);
+}
+.breadcrumb li { display: inline-flex; align-items: center; gap: var(--space-2); }
+.breadcrumb a { color: rgba(255,255,255,0.72); transition: color var(--transition-fast); }
+.breadcrumb a:hover { color: var(--color-white); text-decoration: underline; }
+.breadcrumb [aria-current="page"] { color: var(--color-accent); font-weight: 600; }
+.breadcrumb-sep { color: rgba(255,255,255,0.35); }
+.breadcrumb-sep svg, .breadcrumb-sep i { width: 14px; height: 14px; display: block; }
+
+/* Photo-gap disclosure. Renders on service pages where no client photograph
+   depicts the service (config.php $servicePhotos `photo_gap`). Visible, quiet,
+   and honest — the alternative was captioning an unrelated lawn photo as though
+   it showed the work. Delete the flag, and this disappears. */
+.photo-note {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-3);
+  max-width: 65ch;
+  margin: var(--space-6) auto 0;
+  padding: var(--space-3) var(--space-4);
+  border-left: 3px solid var(--color-gray-light);
+  color: var(--color-gray);
+  font-size: var(--font-size-xs);
+  line-height: 1.6;
+}
+.photo-note i, .photo-note svg { width: 15px; height: 15px; flex-shrink: 0; margin-top: 3px; }
 
 /* === Responsive: Tablet + below (1024px) — nav collapses === */
 @media (max-width: 1024px) {

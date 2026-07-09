@@ -144,6 +144,108 @@ function servicesOnPage(string $pageSlug): array
     ));
 }
 
+/* ── Photos ───────────────────────────────────────────────── */
+
+/**
+ * A photo from $photoLibrary by key: ['src','w','h','alt'].
+ * Throws rather than returning a stub — a missing key is a build bug, and a
+ * silently empty <img src=""> is exactly the placeholder CLAUDE.md forbids.
+ */
+function photo(string $key): array
+{
+    global $photoLibrary;
+
+    if (!isset($photoLibrary[$key])) {
+        throw new InvalidArgumentException("Unknown photo key: {$key}");
+    }
+    return $photoLibrary[$key];
+}
+
+/**
+ * The 1600x1202 rendition of a photo, for use as a hero background-image.
+ * Falls back to the 370px source rather than failing — a soft hero beats none.
+ */
+function heroPhoto(string $key): array
+{
+    global $heroRenditions;
+
+    $base = photo($key);
+    if (isset($heroRenditions[$key])) {
+        $base['src'] = $heroRenditions[$key];
+        $base['w']   = 1600;
+        $base['h']   = 1202;
+    }
+    return $base;
+}
+
+/** Hero + body photo assignment for a service page. See config.php $servicePhotos. */
+function servicePagePhotos(string $pageSlug): array
+{
+    global $servicePhotos;
+
+    return $servicePhotos[$pageSlug] ?? ['hero' => 'front_lawn', 'body' => ['front_lawn']];
+}
+
+/* ── Service pages ────────────────────────────────────────── */
+
+/** One entry from $servicePages by slug, or null. */
+function servicePageBySlug(string $slug): ?array
+{
+    global $servicePages;
+
+    foreach ($servicePages ?? [] as $page) {
+        if ($page['slug'] === $slug) {
+            return $page;
+        }
+    }
+    return null;
+}
+
+/**
+ * Icon / description / bullets for a service page's card, from $serviceCardMeta.
+ *
+ * Throws on an unknown slug for the same reason photo() does: a card silently
+ * rendering with no icon and no bullets is exactly the half-built component
+ * CLAUDE.md's Required Components section forbids.
+ */
+function serviceCardMeta(string $slug): array
+{
+    global $serviceCardMeta;
+
+    if (!isset($serviceCardMeta[$slug])) {
+        throw new InvalidArgumentException("No card metadata for service page: {$slug}");
+    }
+    return $serviceCardMeta[$slug];
+}
+
+/**
+ * $count other service pages, for the "Other Services You May Need" block.
+ *
+ * Deterministic, not random: the slug seeds the offset, so a given page always
+ * shows the same three siblings. Random picks would change the internal link
+ * graph on every request and make crawl behaviour non-reproducible.
+ */
+function relatedServicePages(string $currentSlug, int $count = 3): array
+{
+    global $servicePages;
+
+    $others = array_values(array_filter(
+        $servicePages ?? [],
+        fn(array $p): bool => $p['slug'] !== $currentSlug
+    ));
+
+    if (empty($others)) {
+        return [];
+    }
+
+    $offset = crc32($currentSlug) % count($others);
+    $picked = [];
+    for ($i = 0; $i < min($count, count($others)); $i++) {
+        $picked[] = $others[($offset + $i) % count($others)];
+    }
+    return $picked;
+}
+
 /* ── URLs ─────────────────────────────────────────────────── */
 
 /** Absolute URL for a site-root-relative path. */
