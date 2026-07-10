@@ -90,6 +90,9 @@ The **image-analyst** sub-agent runs ONCE per client build, immediately after in
 
 Downstream contract: the copywriter reviews GAPS before writing and specifies slots as `[IMAGE: subject/mood/orientation need]` (never URLs); the page-assembler fills every slot from the manifest (subject fit → orientation fit → lowest usage) and appends the page path to `used_on` after placing — it stops and reports if no in-budget match exists; the qa-auditor cross-greps ledgers vs. actual usage (no image over `max_uses`, none on 3+ pages, alts consistent with the manifest).
 
+> **TEMPORARY DATA-AVAILABILITY NOTE (2026-07-10 — remove when the v6.1 intake fields flow end-to-end):**
+> Items 3 (SMS acceptance), 7 (hours), 14-15 (GBP map embed, place_id) and conditional items 16-22 below arrive ONLY via the `integrations` block (and `business_hours`) in `build-plan.json`. If a value is absent there, it is UNAVAILABLE for this build — omit the dependent section honestly (skip F4/F5/F7/F8/F9; sticky bar gets two buttons, not three). Do NOT search Google Maps for embed links (F4's retrieval steps are suspended), do NOT guess place_ids, do NOT fabricate hours, badges, or review counts. Treat SMS as NOT accepted unless `integrations.accepts_sms` is `true`.
+
 **CONDITIONAL (ask; skip section if none):**
 16. BBB profile URL (+ accreditation status)  17. Manufacturer/certification profile links (GAF, CertainTeed, ISA arborist, etc. — the client's page on the issuer's site)  18. Trade association memberships (+ member-directory links)  19. License number(s)  20. Elfsight reviews widget embed HTML  21. Financing provider + prequalify link  22. Online scheduling link (Google Appointment Schedules / Calendly)  23. Video assets (YouTube links or Cloudinary files)  24. Social links
 

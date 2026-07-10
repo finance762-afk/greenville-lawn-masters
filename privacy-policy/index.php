@@ -53,6 +53,13 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/includes/functions.php';
 $currentPage = 'legal';
 
 $pageTitle       = 'Privacy Policy | Greenville Lawn Masters, Mauldin SC';
+$pageDescription = 'Greenville Lawn Masters privacy practices, data collection, CCPA rights, '
+                 . 'SMS consent terms, and how we protect your information in Mauldin, SC.';   // 158 chars
+
+$canonicalUrl = $siteUrl . '/privacy-policy/';
+$ogImage      = $logoUrl;
+
+$pageTitle       = 'Privacy Policy | Greenville Lawn Masters, Mauldin SC';
 $pageDescription = 'How Greenville Lawn Masters collects, uses, and protects your information — '
                  . 'contact forms, cookies, SMS consent, and your privacy rights in South Carolina '
                  . 'and California.';   // 159 chars

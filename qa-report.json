@@ -1,21 +1,21 @@
 {
-  "tier": "standard",
+  "tier": "premium",
   "tier_config": {
-    "min_css_per_page": 200,
-    "min_techniques": 4,
-    "requires_blog": false
+    "min_css_per_page": 400,
+    "min_techniques": 6,
+    "requires_blog": true
   },
   "site": "greenville-lawn-masters",
-  "expected_slug": null,
+  "expected_slug": "greenville-lawn-masters",
   "passed": false,
   "grade": "F",
-  "score_pct": 63,
+  "score_pct": 86,
   "summary": {
-    "total": 196,
-    "passed": 120,
-    "failed": 71,
+    "total": 174,
+    "passed": 141,
+    "failed": 28,
     "warn": 5,
-    "blockers_failed": 56,
+    "blockers_failed": 13,
     "warnings_failed": 16
   },
   "techniques_detected": [
@@ -564,55 +564,55 @@
     },
     {
       "status": "pass",
-      "check": "Standard tier CSS bar",
-      "detail": "1635 lines (605 inline + 1030 external, need \u2265200)",
+      "check": "Premium tier CSS bar",
+      "detail": "1635 lines (605 inline + 1030 external, need \u2265400)",
       "file": "index.php",
       "severity": "blocker",
-      "expected": "200",
+      "expected": "400",
       "actual": "1635",
       "fix_hint": "",
       "section": "PHP STANDARDS"
     },
     {
       "status": "pass",
-      "check": "Standard tier CSS bar",
-      "detail": "1486 lines (456 inline + 1030 external, need \u2265200)",
+      "check": "Premium tier CSS bar",
+      "detail": "1486 lines (456 inline + 1030 external, need \u2265400)",
       "file": "about/index.php",
       "severity": "blocker",
-      "expected": "200",
+      "expected": "400",
       "actual": "1486",
       "fix_hint": "",
       "section": "PHP STANDARDS"
     },
     {
       "status": "pass",
-      "check": "Standard tier CSS bar",
-      "detail": "1422 lines (392 inline + 1030 external, need \u2265200)",
+      "check": "Premium tier CSS bar",
+      "detail": "1422 lines (392 inline + 1030 external, need \u2265400)",
       "file": "services/index.php",
       "severity": "blocker",
-      "expected": "200",
+      "expected": "400",
       "actual": "1422",
       "fix_hint": "",
       "section": "PHP STANDARDS"
     },
     {
       "status": "pass",
-      "check": "Standard tier CSS bar",
-      "detail": "1473 lines (443 inline + 1030 external, need \u2265200)",
+      "check": "Premium tier CSS bar",
+      "detail": "1473 lines (443 inline + 1030 external, need \u2265400)",
       "file": "contact/index.php",
       "severity": "blocker",
-      "expected": "200",
+      "expected": "400",
       "actual": "1473",
       "fix_hint": "",
       "section": "PHP STANDARDS"
     },
     {
       "status": "pass",
-      "check": "Standard tier techniques",
-      "detail": "7 distinct techniques detected (need \u22654)",
+      "check": "Premium tier techniques",
+      "detail": "7 distinct techniques detected (need \u22656)",
       "file": "",
       "severity": "blocker",
-      "expected": "4",
+      "expected": "6",
       "actual": "7",
       "fix_hint": "",
       "section": "PHP STANDARDS"
@@ -629,25 +629,14 @@
       "section": "SEO COMPLIANCE"
     },
     {
-      "status": "fail",
-      "check": "Banned: meta keywords tag",
-      "detail": "Obsolete SEO signal (Google ignores since 2009) \u2014 remove",
-      "file": "index.php",
-      "severity": "blocker",
-      "expected": null,
-      "actual": null,
-      "fix_hint": "Remove the <meta name=\"keywords\"> tag",
-      "section": "SEO COMPLIANCE"
-    },
-    {
-      "status": "fail",
+      "status": "pass",
       "check": "JSON-LD schema",
-      "detail": "No structured data found (checked page + head.php)",
+      "detail": "",
       "file": "index.php",
       "severity": "blocker",
       "expected": null,
       "actual": null,
-      "fix_hint": "Add <script type=\"application/ld+json\"> or set $schemaMarkup before head.php include",
+      "fix_hint": "",
       "section": "SEO COMPLIANCE"
     },
     {
@@ -673,25 +662,14 @@
       "section": "SEO COMPLIANCE"
     },
     {
-      "status": "fail",
-      "check": "Banned: meta keywords tag",
-      "detail": "Obsolete SEO signal (Google ignores since 2009) \u2014 remove",
-      "file": "service-areas/index.php",
-      "severity": "blocker",
-      "expected": null,
-      "actual": null,
-      "fix_hint": "Remove the <meta name=\"keywords\"> tag",
-      "section": "SEO COMPLIANCE"
-    },
-    {
-      "status": "fail",
+      "status": "pass",
       "check": "JSON-LD schema",
-      "detail": "No structured data found (checked page + head.php)",
+      "detail": "",
       "file": "service-areas/index.php",
       "severity": "blocker",
       "expected": null,
       "actual": null,
-      "fix_hint": "Add <script type=\"application/ld+json\"> or set $schemaMarkup before head.php include",
+      "fix_hint": "",
       "section": "SEO COMPLIANCE"
     },
     {
@@ -717,17 +695,6 @@
       "section": "SEO COMPLIANCE"
     },
     {
-      "status": "fail",
-      "check": "Banned: meta keywords tag",
-      "detail": "Obsolete SEO signal (Google ignores since 2009) \u2014 remove",
-      "file": "privacy-policy/index.php",
-      "severity": "blocker",
-      "expected": null,
-      "actual": null,
-      "fix_hint": "Remove the <meta name=\"keywords\"> tag",
-      "section": "SEO COMPLIANCE"
-    },
-    {
       "status": "pass",
       "check": "JSON-LD schema",
       "detail": "",
@@ -761,25 +728,14 @@
       "section": "SEO COMPLIANCE"
     },
     {
-      "status": "fail",
-      "check": "Banned: meta keywords tag",
-      "detail": "Obsolete SEO signal (Google ignores since 2009) \u2014 remove",
-      "file": "terms/index.php",
-      "severity": "blocker",
-      "expected": null,
-      "actual": null,
-      "fix_hint": "Remove the <meta name=\"keywords\"> tag",
-      "section": "SEO COMPLIANCE"
-    },
-    {
-      "status": "fail",
+      "status": "pass",
       "check": "JSON-LD schema",
-      "detail": "No structured data found (checked page + head.php)",
+      "detail": "",
       "file": "terms/index.php",
       "severity": "blocker",
       "expected": null,
       "actual": null,
-      "fix_hint": "Add <script type=\"application/ld+json\"> or set $schemaMarkup before head.php include",
+      "fix_hint": "",
       "section": "SEO COMPLIANCE"
     },
     {
@@ -805,25 +761,14 @@
       "section": "SEO COMPLIANCE"
     },
     {
-      "status": "fail",
-      "check": "Banned: meta keywords tag",
-      "detail": "Obsolete SEO signal (Google ignores since 2009) \u2014 remove",
-      "file": "services/index.php",
-      "severity": "blocker",
-      "expected": null,
-      "actual": null,
-      "fix_hint": "Remove the <meta name=\"keywords\"> tag",
-      "section": "SEO COMPLIANCE"
-    },
-    {
-      "status": "fail",
+      "status": "pass",
       "check": "JSON-LD schema",
-      "detail": "No structured data found (checked page + head.php)",
+      "detail": "",
       "file": "services/index.php",
       "severity": "blocker",
       "expected": null,
       "actual": null,
-      "fix_hint": "Add <script type=\"application/ld+json\"> or set $schemaMarkup before head.php include",
+      "fix_hint": "",
       "section": "SEO COMPLIANCE"
     },
     {
@@ -849,25 +794,14 @@
       "section": "SEO COMPLIANCE"
     },
     {
-      "status": "fail",
-      "check": "Banned: meta keywords tag",
-      "detail": "Obsolete SEO signal (Google ignores since 2009) \u2014 remove",
-      "file": "about/index.php",
-      "severity": "blocker",
-      "expected": null,
-      "actual": null,
-      "fix_hint": "Remove the <meta name=\"keywords\"> tag",
-      "section": "SEO COMPLIANCE"
-    },
-    {
-      "status": "fail",
+      "status": "pass",
       "check": "JSON-LD schema",
-      "detail": "No structured data found (checked page + head.php)",
+      "detail": "",
       "file": "about/index.php",
       "severity": "blocker",
       "expected": null,
       "actual": null,
-      "fix_hint": "Add <script type=\"application/ld+json\"> or set $schemaMarkup before head.php include",
+      "fix_hint": "",
       "section": "SEO COMPLIANCE"
     },
     {
@@ -893,25 +827,14 @@
       "section": "SEO COMPLIANCE"
     },
     {
-      "status": "fail",
-      "check": "Banned: meta keywords tag",
-      "detail": "Obsolete SEO signal (Google ignores since 2009) \u2014 remove",
-      "file": "thank-you/index.php",
-      "severity": "blocker",
-      "expected": null,
-      "actual": null,
-      "fix_hint": "Remove the <meta name=\"keywords\"> tag",
-      "section": "SEO COMPLIANCE"
-    },
-    {
-      "status": "fail",
+      "status": "pass",
       "check": "JSON-LD schema",
-      "detail": "No structured data found (checked page + head.php)",
+      "detail": "",
       "file": "thank-you/index.php",
       "severity": "blocker",
       "expected": null,
       "actual": null,
-      "fix_hint": "Add <script type=\"application/ld+json\"> or set $schemaMarkup before head.php include",
+      "fix_hint": "",
       "section": "SEO COMPLIANCE"
     },
     {
@@ -937,25 +860,14 @@
       "section": "SEO COMPLIANCE"
     },
     {
-      "status": "fail",
-      "check": "Banned: meta keywords tag",
-      "detail": "Obsolete SEO signal (Google ignores since 2009) \u2014 remove",
-      "file": "contact/index.php",
-      "severity": "blocker",
-      "expected": null,
-      "actual": null,
-      "fix_hint": "Remove the <meta name=\"keywords\"> tag",
-      "section": "SEO COMPLIANCE"
-    },
-    {
-      "status": "fail",
+      "status": "pass",
       "check": "JSON-LD schema",
-      "detail": "No structured data found (checked page + head.php)",
+      "detail": "",
       "file": "contact/index.php",
       "severity": "blocker",
       "expected": null,
       "actual": null,
-      "fix_hint": "Add <script type=\"application/ld+json\"> or set $schemaMarkup before head.php include",
+      "fix_hint": "",
       "section": "SEO COMPLIANCE"
     },
     {
@@ -981,17 +893,6 @@
       "section": "SEO COMPLIANCE"
     },
     {
-      "status": "fail",
-      "check": "Banned: meta keywords tag",
-      "detail": "Obsolete SEO signal (Google ignores since 2009) \u2014 remove",
-      "file": "cookie-policy/index.php",
-      "severity": "blocker",
-      "expected": null,
-      "actual": null,
-      "fix_hint": "Remove the <meta name=\"keywords\"> tag",
-      "section": "SEO COMPLIANCE"
-    },
-    {
       "status": "pass",
       "check": "JSON-LD schema",
       "detail": "",
@@ -1025,25 +926,14 @@
       "section": "SEO COMPLIANCE"
     },
     {
-      "status": "fail",
-      "check": "Banned: meta keywords tag",
-      "detail": "Obsolete SEO signal (Google ignores since 2009) \u2014 remove",
-      "file": "accessibility/index.php",
-      "severity": "blocker",
-      "expected": null,
-      "actual": null,
-      "fix_hint": "Remove the <meta name=\"keywords\"> tag",
-      "section": "SEO COMPLIANCE"
-    },
-    {
-      "status": "fail",
+      "status": "pass",
       "check": "JSON-LD schema",
-      "detail": "No structured data found (checked page + head.php)",
+      "detail": "",
       "file": "accessibility/index.php",
       "severity": "blocker",
       "expected": null,
       "actual": null,
-      "fix_hint": "Add <script type=\"application/ld+json\"> or set $schemaMarkup before head.php include",
+      "fix_hint": "",
       "section": "SEO COMPLIANCE"
     },
     {
@@ -1069,25 +959,14 @@
       "section": "SEO COMPLIANCE"
     },
     {
-      "status": "fail",
-      "check": "Banned: meta keywords tag",
-      "detail": "Obsolete SEO signal (Google ignores since 2009) \u2014 remove",
-      "file": "faq/index.php",
-      "severity": "blocker",
-      "expected": null,
-      "actual": null,
-      "fix_hint": "Remove the <meta name=\"keywords\"> tag",
-      "section": "SEO COMPLIANCE"
-    },
-    {
-      "status": "fail",
+      "status": "pass",
       "check": "JSON-LD schema",
-      "detail": "No structured data found (checked page + head.php)",
+      "detail": "",
       "file": "faq/index.php",
       "severity": "blocker",
       "expected": null,
       "actual": null,
-      "fix_hint": "Add <script type=\"application/ld+json\"> or set $schemaMarkup before head.php include",
+      "fix_hint": "",
       "section": "SEO COMPLIANCE"
     },
     {
@@ -1113,25 +992,14 @@
       "section": "SEO COMPLIANCE"
     },
     {
-      "status": "fail",
-      "check": "Banned: meta keywords tag",
-      "detail": "Obsolete SEO signal (Google ignores since 2009) \u2014 remove",
-      "file": "service-areas/mauldin/index.php",
-      "severity": "blocker",
-      "expected": null,
-      "actual": null,
-      "fix_hint": "Remove the <meta name=\"keywords\"> tag",
-      "section": "SEO COMPLIANCE"
-    },
-    {
-      "status": "fail",
+      "status": "pass",
       "check": "JSON-LD schema",
-      "detail": "No structured data found (checked page + head.php)",
+      "detail": "",
       "file": "service-areas/mauldin/index.php",
       "severity": "blocker",
       "expected": null,
       "actual": null,
-      "fix_hint": "Add <script type=\"application/ld+json\"> or set $schemaMarkup before head.php include",
+      "fix_hint": "",
       "section": "SEO COMPLIANCE"
     },
     {
@@ -1157,25 +1025,14 @@
       "section": "SEO COMPLIANCE"
     },
     {
-      "status": "fail",
-      "check": "Banned: meta keywords tag",
-      "detail": "Obsolete SEO signal (Google ignores since 2009) \u2014 remove",
-      "file": "services/mulch-installation/index.php",
-      "severity": "blocker",
-      "expected": null,
-      "actual": null,
-      "fix_hint": "Remove the <meta name=\"keywords\"> tag",
-      "section": "SEO COMPLIANCE"
-    },
-    {
-      "status": "fail",
+      "status": "pass",
       "check": "JSON-LD schema",
-      "detail": "No structured data found (checked page + head.php)",
+      "detail": "",
       "file": "services/mulch-installation/index.php",
       "severity": "blocker",
       "expected": null,
       "actual": null,
-      "fix_hint": "Add <script type=\"application/ld+json\"> or set $schemaMarkup before head.php include",
+      "fix_hint": "",
       "section": "SEO COMPLIANCE"
     },
     {
@@ -1201,25 +1058,14 @@
       "section": "SEO COMPLIANCE"
     },
     {
-      "status": "fail",
-      "check": "Banned: meta keywords tag",
-      "detail": "Obsolete SEO signal (Google ignores since 2009) \u2014 remove",
-      "file": "services/sod-installation/index.php",
-      "severity": "blocker",
-      "expected": null,
-      "actual": null,
-      "fix_hint": "Remove the <meta name=\"keywords\"> tag",
-      "section": "SEO COMPLIANCE"
-    },
-    {
-      "status": "fail",
+      "status": "pass",
       "check": "JSON-LD schema",
-      "detail": "No structured data found (checked page + head.php)",
+      "detail": "",
       "file": "services/sod-installation/index.php",
       "severity": "blocker",
       "expected": null,
       "actual": null,
-      "fix_hint": "Add <script type=\"application/ld+json\"> or set $schemaMarkup before head.php include",
+      "fix_hint": "",
       "section": "SEO COMPLIANCE"
     },
     {
@@ -1245,25 +1091,14 @@
       "section": "SEO COMPLIANCE"
     },
     {
-      "status": "fail",
-      "check": "Banned: meta keywords tag",
-      "detail": "Obsolete SEO signal (Google ignores since 2009) \u2014 remove",
-      "file": "services/tree-shrub-services/index.php",
-      "severity": "blocker",
-      "expected": null,
-      "actual": null,
-      "fix_hint": "Remove the <meta name=\"keywords\"> tag",
-      "section": "SEO COMPLIANCE"
-    },
-    {
-      "status": "fail",
+      "status": "pass",
       "check": "JSON-LD schema",
-      "detail": "No structured data found (checked page + head.php)",
+      "detail": "",
       "file": "services/tree-shrub-services/index.php",
       "severity": "blocker",
       "expected": null,
       "actual": null,
-      "fix_hint": "Add <script type=\"application/ld+json\"> or set $schemaMarkup before head.php include",
+      "fix_hint": "",
       "section": "SEO COMPLIANCE"
     },
     {
@@ -1289,25 +1124,14 @@
       "section": "SEO COMPLIANCE"
     },
     {
-      "status": "fail",
-      "check": "Banned: meta keywords tag",
-      "detail": "Obsolete SEO signal (Google ignores since 2009) \u2014 remove",
-      "file": "services/pressure-washing/index.php",
-      "severity": "blocker",
-      "expected": null,
-      "actual": null,
-      "fix_hint": "Remove the <meta name=\"keywords\"> tag",
-      "section": "SEO COMPLIANCE"
-    },
-    {
-      "status": "fail",
+      "status": "pass",
       "check": "JSON-LD schema",
-      "detail": "No structured data found (checked page + head.php)",
+      "detail": "",
       "file": "services/pressure-washing/index.php",
       "severity": "blocker",
       "expected": null,
       "actual": null,
-      "fix_hint": "Add <script type=\"application/ld+json\"> or set $schemaMarkup before head.php include",
+      "fix_hint": "",
       "section": "SEO COMPLIANCE"
     },
     {
@@ -1333,25 +1157,14 @@
       "section": "SEO COMPLIANCE"
     },
     {
-      "status": "fail",
-      "check": "Banned: meta keywords tag",
-      "detail": "Obsolete SEO signal (Google ignores since 2009) \u2014 remove",
-      "file": "services/lawn-care-services/index.php",
-      "severity": "blocker",
-      "expected": null,
-      "actual": null,
-      "fix_hint": "Remove the <meta name=\"keywords\"> tag",
-      "section": "SEO COMPLIANCE"
-    },
-    {
-      "status": "fail",
+      "status": "pass",
       "check": "JSON-LD schema",
-      "detail": "No structured data found (checked page + head.php)",
+      "detail": "",
       "file": "services/lawn-care-services/index.php",
       "severity": "blocker",
       "expected": null,
       "actual": null,
-      "fix_hint": "Add <script type=\"application/ld+json\"> or set $schemaMarkup before head.php include",
+      "fix_hint": "",
       "section": "SEO COMPLIANCE"
     },
     {
@@ -1377,25 +1190,14 @@
       "section": "SEO COMPLIANCE"
     },
     {
-      "status": "fail",
-      "check": "Banned: meta keywords tag",
-      "detail": "Obsolete SEO signal (Google ignores since 2009) \u2014 remove",
-      "file": "services/gutter-cleaning/index.php",
-      "severity": "blocker",
-      "expected": null,
-      "actual": null,
-      "fix_hint": "Remove the <meta name=\"keywords\"> tag",
-      "section": "SEO COMPLIANCE"
-    },
-    {
-      "status": "fail",
+      "status": "pass",
       "check": "JSON-LD schema",
-      "detail": "No structured data found (checked page + head.php)",
+      "detail": "",
       "file": "services/gutter-cleaning/index.php",
       "severity": "blocker",
       "expected": null,
       "actual": null,
-      "fix_hint": "Add <script type=\"application/ld+json\"> or set $schemaMarkup before head.php include",
+      "fix_hint": "",
       "section": "SEO COMPLIANCE"
     },
     {
@@ -1421,25 +1223,14 @@
       "section": "SEO COMPLIANCE"
     },
     {
-      "status": "fail",
-      "check": "Banned: meta keywords tag",
-      "detail": "Obsolete SEO signal (Google ignores since 2009) \u2014 remove",
-      "file": "services/spring-fall-cleanup/index.php",
-      "severity": "blocker",
-      "expected": null,
-      "actual": null,
-      "fix_hint": "Remove the <meta name=\"keywords\"> tag",
-      "section": "SEO COMPLIANCE"
-    },
-    {
-      "status": "fail",
+      "status": "pass",
       "check": "JSON-LD schema",
-      "detail": "No structured data found (checked page + head.php)",
+      "detail": "",
       "file": "services/spring-fall-cleanup/index.php",
       "severity": "blocker",
       "expected": null,
       "actual": null,
-      "fix_hint": "Add <script type=\"application/ld+json\"> or set $schemaMarkup before head.php include",
+      "fix_hint": "",
       "section": "SEO COMPLIANCE"
     },
     {
@@ -1465,25 +1256,14 @@
       "section": "SEO COMPLIANCE"
     },
     {
-      "status": "fail",
-      "check": "Banned: meta keywords tag",
-      "detail": "Obsolete SEO signal (Google ignores since 2009) \u2014 remove",
-      "file": "services/flower-bed-shrub-planting/index.php",
-      "severity": "blocker",
-      "expected": null,
-      "actual": null,
-      "fix_hint": "Remove the <meta name=\"keywords\"> tag",
-      "section": "SEO COMPLIANCE"
-    },
-    {
-      "status": "fail",
+      "status": "pass",
       "check": "JSON-LD schema",
-      "detail": "No structured data found (checked page + head.php)",
+      "detail": "",
       "file": "services/flower-bed-shrub-planting/index.php",
       "severity": "blocker",
       "expected": null,
       "actual": null,
-      "fix_hint": "Add <script type=\"application/ld+json\"> or set $schemaMarkup before head.php include",
+      "fix_hint": "",
       "section": "SEO COMPLIANCE"
     },
     {
@@ -1509,25 +1289,14 @@
       "section": "SEO COMPLIANCE"
     },
     {
-      "status": "fail",
-      "check": "Banned: meta keywords tag",
-      "detail": "Obsolete SEO signal (Google ignores since 2009) \u2014 remove",
-      "file": "services/fence-line-clearing-debris-hauling/index.php",
-      "severity": "blocker",
-      "expected": null,
-      "actual": null,
-      "fix_hint": "Remove the <meta name=\"keywords\"> tag",
-      "section": "SEO COMPLIANCE"
-    },
-    {
-      "status": "fail",
+      "status": "pass",
       "check": "JSON-LD schema",
-      "detail": "No structured data found (checked page + head.php)",
+      "detail": "",
       "file": "services/fence-line-clearing-debris-hauling/index.php",
       "severity": "blocker",
       "expected": null,
       "actual": null,
-      "fix_hint": "Add <script type=\"application/ld+json\"> or set $schemaMarkup before head.php include",
+      "fix_hint": "",
       "section": "SEO COMPLIANCE"
     },
     {
@@ -1553,25 +1322,14 @@
       "section": "SEO COMPLIANCE"
     },
     {
-      "status": "fail",
-      "check": "Banned: meta keywords tag",
-      "detail": "Obsolete SEO signal (Google ignores since 2009) \u2014 remove",
-      "file": "services/soil-testing-lime-application/index.php",
-      "severity": "blocker",
-      "expected": null,
-      "actual": null,
-      "fix_hint": "Remove the <meta name=\"keywords\"> tag",
-      "section": "SEO COMPLIANCE"
-    },
-    {
-      "status": "fail",
+      "status": "pass",
       "check": "JSON-LD schema",
-      "detail": "No structured data found (checked page + head.php)",
+      "detail": "",
       "file": "services/soil-testing-lime-application/index.php",
       "severity": "blocker",
       "expected": null,
       "actual": null,
-      "fix_hint": "Add <script type=\"application/ld+json\"> or set $schemaMarkup before head.php include",
+      "fix_hint": "",
       "section": "SEO COMPLIANCE"
     },
     {
@@ -1597,25 +1355,14 @@
       "section": "SEO COMPLIANCE"
     },
     {
-      "status": "fail",
-      "check": "Banned: meta keywords tag",
-      "detail": "Obsolete SEO signal (Google ignores since 2009) \u2014 remove",
-      "file": "services/dethatching/index.php",
-      "severity": "blocker",
-      "expected": null,
-      "actual": null,
-      "fix_hint": "Remove the <meta name=\"keywords\"> tag",
-      "section": "SEO COMPLIANCE"
-    },
-    {
-      "status": "fail",
+      "status": "pass",
       "check": "JSON-LD schema",
-      "detail": "No structured data found (checked page + head.php)",
+      "detail": "",
       "file": "services/dethatching/index.php",
       "severity": "blocker",
       "expected": null,
       "actual": null,
-      "fix_hint": "Add <script type=\"application/ld+json\"> or set $schemaMarkup before head.php include",
+      "fix_hint": "",
       "section": "SEO COMPLIANCE"
     },
     {
@@ -1934,7 +1681,7 @@
       "severity": "blocker",
       "expected": null,
       "actual": null,
-      "fix_hint": "Set <form action=\"https://db.pageone.cloud/functions/v1/leads/{slug}\">",
+      "fix_hint": "Set <form action=\"https://db.pageone.cloud/functions/v1/leads/greenville-lawn-masters\">",
       "section": "FOOTER & CONVERSION"
     },
     {
@@ -1947,6 +1694,17 @@
       "actual": null,
       "fix_hint": "",
       "section": "FOOTER & CONVERSION"
+    },
+    {
+      "status": "fail",
+      "check": "Premium: blog/ directory",
+      "detail": "Premium tier requires blog/ directory",
+      "file": "",
+      "severity": "blocker",
+      "expected": null,
+      "actual": null,
+      "fix_hint": "Create blog/index.php and at least one post",
+      "section": "PREMIUM TIER EXTRAS"
     },
     {
       "status": "pass",
@@ -2282,490 +2040,6 @@
     },
     {
       "status": "fail",
-      "check": "Banned: meta keywords tag",
-      "detail": "Obsolete SEO signal (Google ignores since 2009) \u2014 remove",
-      "file": "index.php",
-      "severity": "blocker",
-      "expected": null,
-      "actual": null,
-      "fix_hint": "Remove the <meta name=\"keywords\"> tag",
-      "section": "SEO COMPLIANCE"
-    },
-    {
-      "status": "fail",
-      "check": "JSON-LD schema",
-      "detail": "No structured data found (checked page + head.php)",
-      "file": "index.php",
-      "severity": "blocker",
-      "expected": null,
-      "actual": null,
-      "fix_hint": "Add <script type=\"application/ld+json\"> or set $schemaMarkup before head.php include",
-      "section": "SEO COMPLIANCE"
-    },
-    {
-      "status": "fail",
-      "check": "Banned: meta keywords tag",
-      "detail": "Obsolete SEO signal (Google ignores since 2009) \u2014 remove",
-      "file": "service-areas/index.php",
-      "severity": "blocker",
-      "expected": null,
-      "actual": null,
-      "fix_hint": "Remove the <meta name=\"keywords\"> tag",
-      "section": "SEO COMPLIANCE"
-    },
-    {
-      "status": "fail",
-      "check": "JSON-LD schema",
-      "detail": "No structured data found (checked page + head.php)",
-      "file": "service-areas/index.php",
-      "severity": "blocker",
-      "expected": null,
-      "actual": null,
-      "fix_hint": "Add <script type=\"application/ld+json\"> or set $schemaMarkup before head.php include",
-      "section": "SEO COMPLIANCE"
-    },
-    {
-      "status": "fail",
-      "check": "Banned: meta keywords tag",
-      "detail": "Obsolete SEO signal (Google ignores since 2009) \u2014 remove",
-      "file": "privacy-policy/index.php",
-      "severity": "blocker",
-      "expected": null,
-      "actual": null,
-      "fix_hint": "Remove the <meta name=\"keywords\"> tag",
-      "section": "SEO COMPLIANCE"
-    },
-    {
-      "status": "fail",
-      "check": "Banned: meta keywords tag",
-      "detail": "Obsolete SEO signal (Google ignores since 2009) \u2014 remove",
-      "file": "terms/index.php",
-      "severity": "blocker",
-      "expected": null,
-      "actual": null,
-      "fix_hint": "Remove the <meta name=\"keywords\"> tag",
-      "section": "SEO COMPLIANCE"
-    },
-    {
-      "status": "fail",
-      "check": "JSON-LD schema",
-      "detail": "No structured data found (checked page + head.php)",
-      "file": "terms/index.php",
-      "severity": "blocker",
-      "expected": null,
-      "actual": null,
-      "fix_hint": "Add <script type=\"application/ld+json\"> or set $schemaMarkup before head.php include",
-      "section": "SEO COMPLIANCE"
-    },
-    {
-      "status": "fail",
-      "check": "Banned: meta keywords tag",
-      "detail": "Obsolete SEO signal (Google ignores since 2009) \u2014 remove",
-      "file": "services/index.php",
-      "severity": "blocker",
-      "expected": null,
-      "actual": null,
-      "fix_hint": "Remove the <meta name=\"keywords\"> tag",
-      "section": "SEO COMPLIANCE"
-    },
-    {
-      "status": "fail",
-      "check": "JSON-LD schema",
-      "detail": "No structured data found (checked page + head.php)",
-      "file": "services/index.php",
-      "severity": "blocker",
-      "expected": null,
-      "actual": null,
-      "fix_hint": "Add <script type=\"application/ld+json\"> or set $schemaMarkup before head.php include",
-      "section": "SEO COMPLIANCE"
-    },
-    {
-      "status": "fail",
-      "check": "Banned: meta keywords tag",
-      "detail": "Obsolete SEO signal (Google ignores since 2009) \u2014 remove",
-      "file": "about/index.php",
-      "severity": "blocker",
-      "expected": null,
-      "actual": null,
-      "fix_hint": "Remove the <meta name=\"keywords\"> tag",
-      "section": "SEO COMPLIANCE"
-    },
-    {
-      "status": "fail",
-      "check": "JSON-LD schema",
-      "detail": "No structured data found (checked page + head.php)",
-      "file": "about/index.php",
-      "severity": "blocker",
-      "expected": null,
-      "actual": null,
-      "fix_hint": "Add <script type=\"application/ld+json\"> or set $schemaMarkup before head.php include",
-      "section": "SEO COMPLIANCE"
-    },
-    {
-      "status": "fail",
-      "check": "Banned: meta keywords tag",
-      "detail": "Obsolete SEO signal (Google ignores since 2009) \u2014 remove",
-      "file": "thank-you/index.php",
-      "severity": "blocker",
-      "expected": null,
-      "actual": null,
-      "fix_hint": "Remove the <meta name=\"keywords\"> tag",
-      "section": "SEO COMPLIANCE"
-    },
-    {
-      "status": "fail",
-      "check": "JSON-LD schema",
-      "detail": "No structured data found (checked page + head.php)",
-      "file": "thank-you/index.php",
-      "severity": "blocker",
-      "expected": null,
-      "actual": null,
-      "fix_hint": "Add <script type=\"application/ld+json\"> or set $schemaMarkup before head.php include",
-      "section": "SEO COMPLIANCE"
-    },
-    {
-      "status": "fail",
-      "check": "Banned: meta keywords tag",
-      "detail": "Obsolete SEO signal (Google ignores since 2009) \u2014 remove",
-      "file": "contact/index.php",
-      "severity": "blocker",
-      "expected": null,
-      "actual": null,
-      "fix_hint": "Remove the <meta name=\"keywords\"> tag",
-      "section": "SEO COMPLIANCE"
-    },
-    {
-      "status": "fail",
-      "check": "JSON-LD schema",
-      "detail": "No structured data found (checked page + head.php)",
-      "file": "contact/index.php",
-      "severity": "blocker",
-      "expected": null,
-      "actual": null,
-      "fix_hint": "Add <script type=\"application/ld+json\"> or set $schemaMarkup before head.php include",
-      "section": "SEO COMPLIANCE"
-    },
-    {
-      "status": "fail",
-      "check": "Banned: meta keywords tag",
-      "detail": "Obsolete SEO signal (Google ignores since 2009) \u2014 remove",
-      "file": "cookie-policy/index.php",
-      "severity": "blocker",
-      "expected": null,
-      "actual": null,
-      "fix_hint": "Remove the <meta name=\"keywords\"> tag",
-      "section": "SEO COMPLIANCE"
-    },
-    {
-      "status": "fail",
-      "check": "Banned: meta keywords tag",
-      "detail": "Obsolete SEO signal (Google ignores since 2009) \u2014 remove",
-      "file": "accessibility/index.php",
-      "severity": "blocker",
-      "expected": null,
-      "actual": null,
-      "fix_hint": "Remove the <meta name=\"keywords\"> tag",
-      "section": "SEO COMPLIANCE"
-    },
-    {
-      "status": "fail",
-      "check": "JSON-LD schema",
-      "detail": "No structured data found (checked page + head.php)",
-      "file": "accessibility/index.php",
-      "severity": "blocker",
-      "expected": null,
-      "actual": null,
-      "fix_hint": "Add <script type=\"application/ld+json\"> or set $schemaMarkup before head.php include",
-      "section": "SEO COMPLIANCE"
-    },
-    {
-      "status": "fail",
-      "check": "Banned: meta keywords tag",
-      "detail": "Obsolete SEO signal (Google ignores since 2009) \u2014 remove",
-      "file": "faq/index.php",
-      "severity": "blocker",
-      "expected": null,
-      "actual": null,
-      "fix_hint": "Remove the <meta name=\"keywords\"> tag",
-      "section": "SEO COMPLIANCE"
-    },
-    {
-      "status": "fail",
-      "check": "JSON-LD schema",
-      "detail": "No structured data found (checked page + head.php)",
-      "file": "faq/index.php",
-      "severity": "blocker",
-      "expected": null,
-      "actual": null,
-      "fix_hint": "Add <script type=\"application/ld+json\"> or set $schemaMarkup before head.php include",
-      "section": "SEO COMPLIANCE"
-    },
-    {
-      "status": "fail",
-      "check": "Banned: meta keywords tag",
-      "detail": "Obsolete SEO signal (Google ignores since 2009) \u2014 remove",
-      "file": "service-areas/mauldin/index.php",
-      "severity": "blocker",
-      "expected": null,
-      "actual": null,
-      "fix_hint": "Remove the <meta name=\"keywords\"> tag",
-      "section": "SEO COMPLIANCE"
-    },
-    {
-      "status": "fail",
-      "check": "JSON-LD schema",
-      "detail": "No structured data found (checked page + head.php)",
-      "file": "service-areas/mauldin/index.php",
-      "severity": "blocker",
-      "expected": null,
-      "actual": null,
-      "fix_hint": "Add <script type=\"application/ld+json\"> or set $schemaMarkup before head.php include",
-      "section": "SEO COMPLIANCE"
-    },
-    {
-      "status": "fail",
-      "check": "Banned: meta keywords tag",
-      "detail": "Obsolete SEO signal (Google ignores since 2009) \u2014 remove",
-      "file": "services/mulch-installation/index.php",
-      "severity": "blocker",
-      "expected": null,
-      "actual": null,
-      "fix_hint": "Remove the <meta name=\"keywords\"> tag",
-      "section": "SEO COMPLIANCE"
-    },
-    {
-      "status": "fail",
-      "check": "JSON-LD schema",
-      "detail": "No structured data found (checked page + head.php)",
-      "file": "services/mulch-installation/index.php",
-      "severity": "blocker",
-      "expected": null,
-      "actual": null,
-      "fix_hint": "Add <script type=\"application/ld+json\"> or set $schemaMarkup before head.php include",
-      "section": "SEO COMPLIANCE"
-    },
-    {
-      "status": "fail",
-      "check": "Banned: meta keywords tag",
-      "detail": "Obsolete SEO signal (Google ignores since 2009) \u2014 remove",
-      "file": "services/sod-installation/index.php",
-      "severity": "blocker",
-      "expected": null,
-      "actual": null,
-      "fix_hint": "Remove the <meta name=\"keywords\"> tag",
-      "section": "SEO COMPLIANCE"
-    },
-    {
-      "status": "fail",
-      "check": "JSON-LD schema",
-      "detail": "No structured data found (checked page + head.php)",
-      "file": "services/sod-installation/index.php",
-      "severity": "blocker",
-      "expected": null,
-      "actual": null,
-      "fix_hint": "Add <script type=\"application/ld+json\"> or set $schemaMarkup before head.php include",
-      "section": "SEO COMPLIANCE"
-    },
-    {
-      "status": "fail",
-      "check": "Banned: meta keywords tag",
-      "detail": "Obsolete SEO signal (Google ignores since 2009) \u2014 remove",
-      "file": "services/tree-shrub-services/index.php",
-      "severity": "blocker",
-      "expected": null,
-      "actual": null,
-      "fix_hint": "Remove the <meta name=\"keywords\"> tag",
-      "section": "SEO COMPLIANCE"
-    },
-    {
-      "status": "fail",
-      "check": "JSON-LD schema",
-      "detail": "No structured data found (checked page + head.php)",
-      "file": "services/tree-shrub-services/index.php",
-      "severity": "blocker",
-      "expected": null,
-      "actual": null,
-      "fix_hint": "Add <script type=\"application/ld+json\"> or set $schemaMarkup before head.php include",
-      "section": "SEO COMPLIANCE"
-    },
-    {
-      "status": "fail",
-      "check": "Banned: meta keywords tag",
-      "detail": "Obsolete SEO signal (Google ignores since 2009) \u2014 remove",
-      "file": "services/pressure-washing/index.php",
-      "severity": "blocker",
-      "expected": null,
-      "actual": null,
-      "fix_hint": "Remove the <meta name=\"keywords\"> tag",
-      "section": "SEO COMPLIANCE"
-    },
-    {
-      "status": "fail",
-      "check": "JSON-LD schema",
-      "detail": "No structured data found (checked page + head.php)",
-      "file": "services/pressure-washing/index.php",
-      "severity": "blocker",
-      "expected": null,
-      "actual": null,
-      "fix_hint": "Add <script type=\"application/ld+json\"> or set $schemaMarkup before head.php include",
-      "section": "SEO COMPLIANCE"
-    },
-    {
-      "status": "fail",
-      "check": "Banned: meta keywords tag",
-      "detail": "Obsolete SEO signal (Google ignores since 2009) \u2014 remove",
-      "file": "services/lawn-care-services/index.php",
-      "severity": "blocker",
-      "expected": null,
-      "actual": null,
-      "fix_hint": "Remove the <meta name=\"keywords\"> tag",
-      "section": "SEO COMPLIANCE"
-    },
-    {
-      "status": "fail",
-      "check": "JSON-LD schema",
-      "detail": "No structured data found (checked page + head.php)",
-      "file": "services/lawn-care-services/index.php",
-      "severity": "blocker",
-      "expected": null,
-      "actual": null,
-      "fix_hint": "Add <script type=\"application/ld+json\"> or set $schemaMarkup before head.php include",
-      "section": "SEO COMPLIANCE"
-    },
-    {
-      "status": "fail",
-      "check": "Banned: meta keywords tag",
-      "detail": "Obsolete SEO signal (Google ignores since 2009) \u2014 remove",
-      "file": "services/gutter-cleaning/index.php",
-      "severity": "blocker",
-      "expected": null,
-      "actual": null,
-      "fix_hint": "Remove the <meta name=\"keywords\"> tag",
-      "section": "SEO COMPLIANCE"
-    },
-    {
-      "status": "fail",
-      "check": "JSON-LD schema",
-      "detail": "No structured data found (checked page + head.php)",
-      "file": "services/gutter-cleaning/index.php",
-      "severity": "blocker",
-      "expected": null,
-      "actual": null,
-      "fix_hint": "Add <script type=\"application/ld+json\"> or set $schemaMarkup before head.php include",
-      "section": "SEO COMPLIANCE"
-    },
-    {
-      "status": "fail",
-      "check": "Banned: meta keywords tag",
-      "detail": "Obsolete SEO signal (Google ignores since 2009) \u2014 remove",
-      "file": "services/spring-fall-cleanup/index.php",
-      "severity": "blocker",
-      "expected": null,
-      "actual": null,
-      "fix_hint": "Remove the <meta name=\"keywords\"> tag",
-      "section": "SEO COMPLIANCE"
-    },
-    {
-      "status": "fail",
-      "check": "JSON-LD schema",
-      "detail": "No structured data found (checked page + head.php)",
-      "file": "services/spring-fall-cleanup/index.php",
-      "severity": "blocker",
-      "expected": null,
-      "actual": null,
-      "fix_hint": "Add <script type=\"application/ld+json\"> or set $schemaMarkup before head.php include",
-      "section": "SEO COMPLIANCE"
-    },
-    {
-      "status": "fail",
-      "check": "Banned: meta keywords tag",
-      "detail": "Obsolete SEO signal (Google ignores since 2009) \u2014 remove",
-      "file": "services/flower-bed-shrub-planting/index.php",
-      "severity": "blocker",
-      "expected": null,
-      "actual": null,
-      "fix_hint": "Remove the <meta name=\"keywords\"> tag",
-      "section": "SEO COMPLIANCE"
-    },
-    {
-      "status": "fail",
-      "check": "JSON-LD schema",
-      "detail": "No structured data found (checked page + head.php)",
-      "file": "services/flower-bed-shrub-planting/index.php",
-      "severity": "blocker",
-      "expected": null,
-      "actual": null,
-      "fix_hint": "Add <script type=\"application/ld+json\"> or set $schemaMarkup before head.php include",
-      "section": "SEO COMPLIANCE"
-    },
-    {
-      "status": "fail",
-      "check": "Banned: meta keywords tag",
-      "detail": "Obsolete SEO signal (Google ignores since 2009) \u2014 remove",
-      "file": "services/fence-line-clearing-debris-hauling/index.php",
-      "severity": "blocker",
-      "expected": null,
-      "actual": null,
-      "fix_hint": "Remove the <meta name=\"keywords\"> tag",
-      "section": "SEO COMPLIANCE"
-    },
-    {
-      "status": "fail",
-      "check": "JSON-LD schema",
-      "detail": "No structured data found (checked page + head.php)",
-      "file": "services/fence-line-clearing-debris-hauling/index.php",
-      "severity": "blocker",
-      "expected": null,
-      "actual": null,
-      "fix_hint": "Add <script type=\"application/ld+json\"> or set $schemaMarkup before head.php include",
-      "section": "SEO COMPLIANCE"
-    },
-    {
-      "status": "fail",
-      "check": "Banned: meta keywords tag",
-      "detail": "Obsolete SEO signal (Google ignores since 2009) \u2014 remove",
-      "file": "services/soil-testing-lime-application/index.php",
-      "severity": "blocker",
-      "expected": null,
-      "actual": null,
-      "fix_hint": "Remove the <meta name=\"keywords\"> tag",
-      "section": "SEO COMPLIANCE"
-    },
-    {
-      "status": "fail",
-      "check": "JSON-LD schema",
-      "detail": "No structured data found (checked page + head.php)",
-      "file": "services/soil-testing-lime-application/index.php",
-      "severity": "blocker",
-      "expected": null,
-      "actual": null,
-      "fix_hint": "Add <script type=\"application/ld+json\"> or set $schemaMarkup before head.php include",
-      "section": "SEO COMPLIANCE"
-    },
-    {
-      "status": "fail",
-      "check": "Banned: meta keywords tag",
-      "detail": "Obsolete SEO signal (Google ignores since 2009) \u2014 remove",
-      "file": "services/dethatching/index.php",
-      "severity": "blocker",
-      "expected": null,
-      "actual": null,
-      "fix_hint": "Remove the <meta name=\"keywords\"> tag",
-      "section": "SEO COMPLIANCE"
-    },
-    {
-      "status": "fail",
-      "check": "JSON-LD schema",
-      "detail": "No structured data found (checked page + head.php)",
-      "file": "services/dethatching/index.php",
-      "severity": "blocker",
-      "expected": null,
-      "actual": null,
-      "fix_hint": "Add <script type=\"application/ld+json\"> or set $schemaMarkup before head.php include",
-      "section": "SEO COMPLIANCE"
-    },
-    {
-      "status": "fail",
       "check": "Images with loading='lazy'",
       "detail": "1 violations in 1 file(s): includes/functions.php",
       "file": "",
@@ -2915,8 +2189,19 @@
       "severity": "blocker",
       "expected": null,
       "actual": null,
-      "fix_hint": "Set <form action=\"https://db.pageone.cloud/functions/v1/leads/{slug}\">",
+      "fix_hint": "Set <form action=\"https://db.pageone.cloud/functions/v1/leads/greenville-lawn-masters\">",
       "section": "FOOTER & CONVERSION"
+    },
+    {
+      "status": "fail",
+      "check": "Premium: blog/ directory",
+      "detail": "Premium tier requires blog/ directory",
+      "file": "",
+      "severity": "blocker",
+      "expected": null,
+      "actual": null,
+      "fix_hint": "Create blog/index.php and at least one post",
+      "section": "PREMIUM TIER EXTRAS"
     },
     {
       "status": "fail",
