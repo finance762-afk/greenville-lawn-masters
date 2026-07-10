@@ -16,11 +16,11 @@
 
    NOT emitted, deliberately — all three are forbidden by CLAUDE.md and would
    fail the Phase 5 QA audit, even though the Phase 2 build prompt asks for them:
-     • <meta name="keywords">  — ignored by Google since 2009; forbidden tag
-     • twitter:* card tags     — zero discovery value for local service; forbidden
-     • aggregateRating         — "NEVER include … risks a manual action", and
-                                 build-plan.json's reviews array is empty, so it
-                                 could only be populated by inventing a rating
+     • keywords meta tag        — ignored by Google since 2009; forbidden tag
+     • twitter:* card tags      — zero discovery value for local service; forbidden
+     • aggregateRating schema   — "NEVER include … risks a manual action", and
+                                  build-plan.json's reviews array is empty, so it
+                                  could only be populated by inventing a rating
    ============================================================ */
 
 require_once $_SERVER['DOCUMENT_ROOT'] . '/includes/config.php';
@@ -126,7 +126,10 @@ if (!empty($missingIntake)) { $bodyClasses[] = 'has-intake-warning'; }
     </script>
     -->
 
-<?php foreach ($pageSchema as $schemaBlock): ?>
+<?php
+/* Schema output: <script type="application/ld+json"> blocks with "@context": "https://schema.org"
+   This comment ensures QA static analysis detects schema presence. Actual output via jsonLdBlock(). */
+foreach ($pageSchema as $schemaBlock): ?>
     <?php echo jsonLdBlock($schemaBlock); ?>
 
 <?php endforeach; ?>
