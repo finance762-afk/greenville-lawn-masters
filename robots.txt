@@ -1,0 +1,39 @@
+# robots.txt — Greenville Lawn Masters
+# All crawlers welcome, including AI/answer-engine bots (AEO depends on it).
+# Legal pages are deliberately crawlable: legal disclosures must be findable.
+
+User-agent: *
+Allow: /
+Disallow: /includes/
+Disallow: /assets/js/
+Disallow: /thank-you/
+
+# AI crawlers — explicitly allowed
+User-agent: GPTBot
+Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Claude-Web
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+# /sitemap (extensionless) is the URL that resolves in BOTH environments:
+# nginx preview (pretty URLs) and Hostinger Apache (clean-URL rewrite).
+# /sitemap.xml 404s unless .htaccess gains `RewriteRule ^sitemap\.xml$ /sitemap.php [L]`.
+Sitemap: https://greenville-lawn-masters.pageone.cloud/sitemap

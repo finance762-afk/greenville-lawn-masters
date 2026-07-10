@@ -202,7 +202,10 @@ $footerServicesRight = array_slice($servicePages, 6);
                 <span class="divider" aria-hidden="true">|</span>
                 <a href="/privacy-policy/#ccpa-rights">Do Not Sell or Share My Personal Information</a>
                 <span class="divider" aria-hidden="true">|</span>
-                <a href="/sitemap.xml">Sitemap</a>
+                <?php /* /sitemap, not /sitemap.xml: no sitemap.xml rewrite exists in
+                         .htaccess and nginx previews ignore .htaccess, so the .xml URL
+                         404s in both environments. /sitemap → sitemap.php works in both. */ ?>
+                <a href="/sitemap">Sitemap</a>
             </div>
 
             <div class="footer-bottom-bar">
