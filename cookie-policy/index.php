@@ -1,6 +1,11 @@
 <?php
 require_once $_SERVER['DOCUMENT_ROOT'] . '/includes/config.php';
 require_once $_SERVER['DOCUMENT_ROOT'] . '/includes/functions.php';
+
+$pageTitle = 'Cookie Policy | Greenville Lawn Masters | Mauldin, SC';
+$pageDescription = 'Cookie Policy for Greenville Lawn Masters. Learn about the cookies and tracking technologies we use on our website and how to manage your preferences.';
+$canonicalUrl = 'https://greenville-lawn-masters.pageone.cloud/cookie-policy/';
+$currentPage = 'legal';
 ?>
 <?php
 /* ============================================================

@@ -9,13 +9,13 @@
   "expected_slug": "greenville-lawn-masters",
   "passed": false,
   "grade": "F",
-  "score_pct": 86,
+  "score_pct": 90,
   "summary": {
-    "total": 174,
-    "passed": 141,
-    "failed": 28,
+    "total": 172,
+    "passed": 145,
+    "failed": 22,
     "warn": 5,
-    "blockers_failed": 13,
+    "blockers_failed": 7,
     "warnings_failed": 16
   },
   "techniques_detected": [
@@ -233,72 +233,6 @@
       "section": "FILE STRUCTURE"
     },
     {
-      "status": "fail",
-      "check": "SEO var $pageTitle before head.php",
-      "detail": "Not set before include",
-      "file": "privacy-policy/index.php",
-      "severity": "blocker",
-      "expected": null,
-      "actual": null,
-      "fix_hint": "",
-      "section": "PHP STANDARDS"
-    },
-    {
-      "status": "fail",
-      "check": "SEO var $pageDescription before head.php",
-      "detail": "Not set before include",
-      "file": "privacy-policy/index.php",
-      "severity": "blocker",
-      "expected": null,
-      "actual": null,
-      "fix_hint": "",
-      "section": "PHP STANDARDS"
-    },
-    {
-      "status": "fail",
-      "check": "SEO var $canonicalUrl before head.php",
-      "detail": "Not set before include",
-      "file": "privacy-policy/index.php",
-      "severity": "blocker",
-      "expected": null,
-      "actual": null,
-      "fix_hint": "",
-      "section": "PHP STANDARDS"
-    },
-    {
-      "status": "fail",
-      "check": "SEO var $pageTitle before head.php",
-      "detail": "Not set before include",
-      "file": "cookie-policy/index.php",
-      "severity": "blocker",
-      "expected": null,
-      "actual": null,
-      "fix_hint": "",
-      "section": "PHP STANDARDS"
-    },
-    {
-      "status": "fail",
-      "check": "SEO var $pageDescription before head.php",
-      "detail": "Not set before include",
-      "file": "cookie-policy/index.php",
-      "severity": "blocker",
-      "expected": null,
-      "actual": null,
-      "fix_hint": "",
-      "section": "PHP STANDARDS"
-    },
-    {
-      "status": "fail",
-      "check": "SEO var $canonicalUrl before head.php",
-      "detail": "Not set before include",
-      "file": "cookie-policy/index.php",
-      "severity": "blocker",
-      "expected": null,
-      "actual": null,
-      "fix_hint": "",
-      "section": "PHP STANDARDS"
-    },
-    {
       "status": "pass",
       "check": "Inline <style> block",
       "detail": "605 CSS lines in 1 block(s)",
@@ -427,6 +361,17 @@
       "severity": "blocker",
       "expected": null,
       "actual": "383",
+      "fix_hint": "",
+      "section": "PHP STANDARDS"
+    },
+    {
+      "status": "pass",
+      "check": "External stylesheet",
+      "detail": "Linked to 1 external CSS file(s), 1030 lines total",
+      "file": "blog/index.php",
+      "severity": "blocker",
+      "expected": null,
+      "actual": "1030",
       "fix_hint": "",
       "section": "PHP STANDARDS"
     },
@@ -974,6 +919,39 @@
       "check": "Canonical tag (via head.php)",
       "detail": "",
       "file": "faq/index.php",
+      "severity": "blocker",
+      "expected": null,
+      "actual": null,
+      "fix_hint": "",
+      "section": "SEO COMPLIANCE"
+    },
+    {
+      "status": "pass",
+      "check": "Single H1",
+      "detail": "",
+      "file": "blog/index.php",
+      "severity": "blocker",
+      "expected": null,
+      "actual": null,
+      "fix_hint": "",
+      "section": "SEO COMPLIANCE"
+    },
+    {
+      "status": "pass",
+      "check": "JSON-LD schema",
+      "detail": "",
+      "file": "blog/index.php",
+      "severity": "blocker",
+      "expected": null,
+      "actual": null,
+      "fix_hint": "",
+      "section": "SEO COMPLIANCE"
+    },
+    {
+      "status": "pass",
+      "check": "Canonical tag (via head.php)",
+      "detail": "",
+      "file": "blog/index.php",
       "severity": "blocker",
       "expected": null,
       "actual": null,
@@ -1697,13 +1675,13 @@
     },
     {
       "status": "fail",
-      "check": "Premium: blog/ directory",
-      "detail": "Premium tier requires blog/ directory",
+      "check": "Premium: blog posts",
+      "detail": "blog/ exists but has no posts",
       "file": "",
       "severity": "blocker",
       "expected": null,
       "actual": null,
-      "fix_hint": "Create blog/index.php and at least one post",
+      "fix_hint": "Create at least one post per design-system.md Part E",
       "section": "PREMIUM TIER EXTRAS"
     },
     {
@@ -1974,72 +1952,6 @@
   "failures": [
     {
       "status": "fail",
-      "check": "SEO var $pageTitle before head.php",
-      "detail": "Not set before include",
-      "file": "privacy-policy/index.php",
-      "severity": "blocker",
-      "expected": null,
-      "actual": null,
-      "fix_hint": "",
-      "section": "PHP STANDARDS"
-    },
-    {
-      "status": "fail",
-      "check": "SEO var $pageDescription before head.php",
-      "detail": "Not set before include",
-      "file": "privacy-policy/index.php",
-      "severity": "blocker",
-      "expected": null,
-      "actual": null,
-      "fix_hint": "",
-      "section": "PHP STANDARDS"
-    },
-    {
-      "status": "fail",
-      "check": "SEO var $canonicalUrl before head.php",
-      "detail": "Not set before include",
-      "file": "privacy-policy/index.php",
-      "severity": "blocker",
-      "expected": null,
-      "actual": null,
-      "fix_hint": "",
-      "section": "PHP STANDARDS"
-    },
-    {
-      "status": "fail",
-      "check": "SEO var $pageTitle before head.php",
-      "detail": "Not set before include",
-      "file": "cookie-policy/index.php",
-      "severity": "blocker",
-      "expected": null,
-      "actual": null,
-      "fix_hint": "",
-      "section": "PHP STANDARDS"
-    },
-    {
-      "status": "fail",
-      "check": "SEO var $pageDescription before head.php",
-      "detail": "Not set before include",
-      "file": "cookie-policy/index.php",
-      "severity": "blocker",
-      "expected": null,
-      "actual": null,
-      "fix_hint": "",
-      "section": "PHP STANDARDS"
-    },
-    {
-      "status": "fail",
-      "check": "SEO var $canonicalUrl before head.php",
-      "detail": "Not set before include",
-      "file": "cookie-policy/index.php",
-      "severity": "blocker",
-      "expected": null,
-      "actual": null,
-      "fix_hint": "",
-      "section": "PHP STANDARDS"
-    },
-    {
-      "status": "fail",
       "check": "Images with loading='lazy'",
       "detail": "1 violations in 1 file(s): includes/functions.php",
       "file": "",
@@ -2194,13 +2106,13 @@
     },
     {
       "status": "fail",
-      "check": "Premium: blog/ directory",
-      "detail": "Premium tier requires blog/ directory",
+      "check": "Premium: blog posts",
+      "detail": "blog/ exists but has no posts",
       "file": "",
       "severity": "blocker",
       "expected": null,
       "actual": null,
-      "fix_hint": "Create blog/index.php and at least one post",
+      "fix_hint": "Create at least one post per design-system.md Part E",
       "section": "PREMIUM TIER EXTRAS"
     },
     {

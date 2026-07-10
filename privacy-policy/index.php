@@ -1,6 +1,11 @@
 <?php
 require_once $_SERVER['DOCUMENT_ROOT'] . '/includes/config.php';
 require_once $_SERVER['DOCUMENT_ROOT'] . '/includes/functions.php';
+
+$pageTitle = 'Privacy Policy | Greenville Lawn Masters | Mauldin, SC';
+$pageDescription = 'Privacy Policy for Greenville Lawn Masters. Learn how we collect, use, and protect your personal information in accordance with CCPA, CPRA, and other privacy laws.';
+$canonicalUrl = 'https://greenville-lawn-masters.pageone.cloud/privacy-policy/';
+$currentPage = 'legal';
 ?>
 <?php
 /* ============================================================

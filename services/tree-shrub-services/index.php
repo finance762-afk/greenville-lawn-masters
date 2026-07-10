@@ -41,7 +41,7 @@ $pageDescription = 'Tree and shrub services in Mauldin, SC: hedge trimming, smal
 
 $canonicalUrl     = $siteUrl . '/services/' . $pageSlug . '/';
 $ogImage          = $ogImageUrl;
-$heroImagePreload = $heroImg['src'];   // /assets/images/hero-mauldin-hedge-trimming.jpg
+$heroImagePreload = $heroImg['src'];   // /assets/images/hero-mauldin-hedge-trimming.webp
 
 $phoneDisplay = formatPhone($phone);
 $phoneLink    = phoneHref($phone);
@@ -279,7 +279,7 @@ include $_SERVER['DOCUMENT_ROOT'] . '/includes/header.php';
   min-height: 76svh;
   display: flex;
   align-items: center;
-  background-image: url('/assets/images/hero-mauldin-hedge-trimming.jpg');
+  background-image: url('/assets/images/hero-mauldin-hedge-trimming.webp');
   background-size: cover;
   background-position: center 46%;
   isolation: isolate;

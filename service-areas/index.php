@@ -145,7 +145,7 @@ include $_SERVER['DOCUMENT_ROOT'] . '/includes/header.php';
   min-height: 68svh;
   display: flex;
   align-items: center;
-  background-image: url('/assets/images/hero-mauldin-hedge-trimming.jpg');
+  background-image: url('/assets/images/hero-mauldin-hedge-trimming.webp');
   background-size: cover;
   background-position: center 40%;
   isolation: isolate;
