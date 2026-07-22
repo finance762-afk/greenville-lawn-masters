@@ -562,3 +562,4 @@ $servicePhotos = [
 // placeholder host, so an absolute URL under it would 404 for every scraper.
 $ogImageUrl = 'https://db.pageone.cloud/storage/v1/object/public/client-assets/'
             . 'greenville-lawn-masters/photos/1783619518888-b5idvx-cr_w_370_h_278.png';
+$leadsFormSecret = 'bac7714a8f41505ab12d75311ccbb11a6374e38b1a010d69111c84a652cfa0f3'; // spam-shield HMAC (matches leads fn LEADS_FORM_SECRET)
