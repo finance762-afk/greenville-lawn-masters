@@ -130,6 +130,7 @@ if (!empty($missingIntake)) { $bodyClasses[] = 'has-intake-warning'; }
     <?php echo jsonLdBlock($schemaBlock); ?>
 
 <?php endforeach; ?>
+<?php require_once __DIR__ . '/edit-mode.php'; ?>
 </head>
 <body<?php echo $bodyClasses ? ' class="' . e(implode(' ', $bodyClasses)) . '"' : ''; ?>>
 
