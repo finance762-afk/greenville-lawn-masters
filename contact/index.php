@@ -718,8 +718,8 @@ include $_SERVER['DOCUMENT_ROOT'] . '/includes/header.php';
                         <label class="form-consent-item form-consent-required" for="contact-terms">
                             <input type="checkbox" name="terms_accepted" id="contact-terms" value="yes" class="consent-checkbox" required>
                             <span class="consent-label">
-                                I have read and agree to the <a href="/privacy-policy/">Privacy Policy</a>
-                                and <a href="/terms/">Terms of Service</a>. <span class="required-star">*</span>
+                                I have read and agree to the <a href="/privacy-policy/" target="_blank" rel="noopener">Privacy Policy</a>
+                                and <a href="/terms/" target="_blank" rel="noopener">Terms of Service</a>. <span class="required-star">*</span>
                             </span>
                         </label>
 

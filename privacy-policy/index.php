@@ -669,7 +669,7 @@ include $_SERVER['DOCUMENT_ROOT'] . '/includes/header.php';
             <p>
                 Our contact form asks for consent in three separate, unbundled checkboxes. None of them is
                 pre-ticked, and <strong>only</strong> agreement to this Privacy Policy and our
-                <a href="/terms/">Terms of Service</a> is required to submit the form.
+                <a href="/terms/" target="_blank" rel="noopener">Terms of Service</a> is required to submit the form.
             </p>
             <ul>
                 <li><strong>Email consent is optional.</strong> Tick it and we may email you about our
