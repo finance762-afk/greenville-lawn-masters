@@ -639,13 +639,6 @@ include $_SERVER['DOCUMENT_ROOT'] . '/includes/header.php';
                 <p>Online: <a href="/contact/">Contact form</a></p>
             </div>
 
-            <div class="legal-disclaimer">
-                <i data-lucide="triangle-alert" aria-hidden="true"></i>
-                <span>
-                    This Terms of Service document is provided as a general template. We recommend
-                    reviewing it with a licensed <?php echo e($companyState); ?> attorney before publication.
-                </span>
-            </div>
 
         </article>
     </div>
